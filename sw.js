@@ -1,11 +1,11 @@
-const CACHE_NAME = "e4a-class-v20260131-1"; // Change v1 to v2 when you update the site
+const CACHE_NAME = "e4a-class-v20260131-2"; // Change v1 to v2 when you update the site
 
 // Files to cache immediately
 const ASSETS = [
   "./",
   "./index.html",
   "./manifest.json",
-  "./E4A_logo.png",
+  "./E4A_logo1.png",
   // Student Images (Ensure filenames match exactly)
   "./Students/sk.png",
   "./Students/ks.png",
