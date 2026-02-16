@@ -75,22 +75,31 @@
     }
 
     /* --- BULLETPROOF BACKGROUND STYLES --- */
-    .trishul-bg {
+        /* --- BULLETPROOF BACKGROUND STYLES FOR BOTH SIDES --- */
+    
+    /* Common settings for both images */
+    .trishul-bg-left, .trishul-bg-right {
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%; /* Perfectly matches header width */
-      height: 100%; /* Perfectly matches header height */
-      
-      /* THIS STOPS CUTOFFS: Fits the image perfectly without stretching */
+      width: 100%;
+      height: 100%;
       object-fit: contain; 
-      
-      /* THIS SLIDES IT RIGHT: First number is Left/Right, Second is Up/Down */
-      object-position: 175% 50%; 
-      
-      opacity: 0.99; 
+      opacity: 0.65; 
       z-index: 0; 
       pointer-events: none; 
+    }
+
+    /* Your perfect RIGHT side setting */
+    .trishul-bg-right {
+      object-position: 175% 50%; 
+    }
+
+    /* The exact opposite LEFT side setting */
+    .trishul-bg-left {
+      object-position: -75% 50%; 
+      /* This line flips the image like a mirror so they frame your logo beautifully! */
+      transform: scaleX(-1); 
     }
 
     /* Protects logo and text */
@@ -164,11 +173,14 @@
 <body onload="pageLoaded()">
 
 <header>
-  <img src="download.png" class="trishul-bg" alt="Maha Shivratri Background">
+  <img src="download.png" class="trishul-bg-left" alt="Maha Shivratri Left">
+  
+  <img src="download.png" class="trishul-bg-right" alt="Maha Shivratri Right">
   
   <img src="E4A_logo.png" class="main-logo" alt="E4A Logo">
   
-  <h1>E4A  STUDY  CLASS</h1>
+  <h1>E4A  STUDY  CLASS</h1>
+
   <nav>
     <ul>
       <li><a href="#about">About</a></li>
