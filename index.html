@@ -16,7 +16,7 @@
   <style>
     /* CSS VARIABLES */
     :root {
-      --primary: #000080; /* Navy Blue */
+      --primary: #000080; 
       --saffron: #FF9933;
       --green: #138808;
       --bg: #f4f6f9;
@@ -46,19 +46,17 @@
       background: none !important;
     }
 
-    /* MAIN CONTENT AREA */
     main { flex: 1 0 auto; position: relative; }
 
     /* HEADER */
     header {
       background: linear-gradient(135deg, var(--saffron) 0%,var(--saffron) 15%, #FFFFFF 45%, var(--green) 100%);
       text-align: center;
-      padding: 20px 20px 30px 20px; /* Added extra bottom padding */
+      padding: 20px 20px 30px 20px; 
       position: relative;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       overflow: hidden; 
       z-index: 2;
-      /* THE FIX: Prevents the header from being squished */
       flex-shrink: 0; 
       min-height: 250px; 
       width: 100%;
@@ -76,21 +74,23 @@
       z-index: 2;
     }
 
-       /* --- MAHA SHIVRATRI BACKGROUND STYLES --- */
-        .trishul-bg {
+    /* --- BULLETPROOF BACKGROUND STYLES --- */
+    .trishul-bg {
       position: absolute;
-      top: 65%; /* Slightly lowered center */
-      left: 50%; 
-      transform: translate(-50%, -50%); /* Keeps it perfectly centered */
+      top: 0;
+      left: 0;
+      width: 100%; /* Perfectly matches header width */
+      height: 100%; /* Perfectly matches header height */
       
-      /* THE MAGIC FIX: */
-      height: 95%; /* Forces the image to NEVER be taller than the header */
-      width: auto; /* Shrinks the width automatically so it doesn't stretch */
+      /* THIS STOPS CUTOFFS: Fits the image perfectly without stretching */
+      object-fit: contain; 
+      
+      /* THIS SLIDES IT RIGHT: First number is Left/Right, Second is Up/Down */
+      object-position: 75% 50%; 
       
       opacity: 0.65; 
       z-index: 0; 
       pointer-events: none; 
-      object-fit: contain;
     }
 
     /* Protects logo and text */
@@ -99,9 +99,10 @@
       z-index: 1; 
     }
 
+    /* Target ONLY the main logo, not the background image */
     header img.main-logo { 
       width: 140px; 
-      height: 140px; /* Fixed height so it never collapses */
+      height: 140px; 
       margin-bottom: 10px; 
       border-radius: 50%; 
       background: white; 
@@ -149,158 +150,4 @@
     footer { background: #2c3e50; color: #fff; text-align: center; padding: 20px 10px; font-size: 14px; margin-top: auto; position: relative; z-index: 2; }
     footer span { display: block; font-size: 13px; opacity: .7; margin-top: 5px; }
 
-    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
-    .reveal.active { opacity: 1; transform: none; }
-
-    @media(max-width: 600px) {
-      header { min-height: 230px; }
-      header img.main-logo { width: 100px; height: 100px; }
-      header h1 { font-size: 22px; }
-      nav ul { gap: 10px; }
-      .trishul-bg { top: 80px; height: 260px; } 
-    }
-  </style>
-</head>
-<body onload="pageLoaded()">
-
-<header>
-  <img src="download.png" class="trishul-bg" alt="Trishul Background">
-  
-  <img src="E4A_logo.png" class="main-logo" alt="E4A Logo">
-  
-  <h1>E4A  STUDY  CLASS</h1>
-  <nav>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#students">Students</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-</header>
-
-<main>
-
-<section id="about">
-  <h2>About Us</h2>
-  <div class="about-grid">
-    <div class="box reveal">
-      <h3>🌟 <span class="hindi" style="font-weight:700;">हमारा दृष्टिकोण</span> (Vision)</h3>
-      <p class="hindi">हमारा दृष्टिकोण एक ऐसा शिक्षण वातावरण बनाना है जहाँ <strong>हर बच्चे को सीखने का समान अवसर मिले।</strong></p>
-      <p class="hindi">हम मानते हैं कि <strong>शिक्षा कोई विशेषाधिकार नहीं, बल्कि हर बच्चे का अधिकार है,</strong> और किसी भी छात्र को आर्थिक या सामाजिक कारणों से शिक्षा से वंचित नहीं रहना चाहिए।</p>
-    </div>
-    <div class="box reveal">
-      <h3>🎯 <span class="hindi" style="font-weight:700;">हमारा लक्ष्य</span> (Goal)</h3>
-      <p class="hindi">हमारा लक्ष्य सभी विद्यार्थियों को <strong>गुणवत्तापूर्ण और मूल्य-आधारित शिक्षा</strong> प्रदान करना है।
-      हम बच्चों की <strong>मजबूत नींव, आत्मविश्वास, अनुशासन और जिज्ञासा </strong>विकसित करने पर ध्यान देते हैं, ताकि वे न केवल परीक्षाओं में अच्छा प्रदर्शन करें बल्कि एक जिम्मेदार और जागरूक नागरिक भी बनें।</p>
-      <p class="hindi"><strong>E4A Study Class</strong> में हम पूरी निष्ठा से <strong>“Education For All - सबके लिए शिक्षा”</strong> के सिद्धांत पर कार्य करते हैं।</p>
-    </div>
-  </div>
-</section>
-
-<section id="students">
-  <h2>Student Corner</h2>
-  <div class="student-grid" id="studentGrid"></div>
-</section>
-
-<section id="contact">
-  <h2>Contact Us</h2>
-  <div class="box contact-grid reveal">
-    
-    <div class="contact-item">
-      <a href="tel:8210660831">
-        <i class='bx bx-phone'></i> 
-        <p>8210660831</p>
-      </a>
-    </div>
-
-    <div class="contact-item">
-      <a href="https://whatsapp.com/channel/0029Vb7H8WC5PO17EFx61S38">
-        <i class='bx bxl-whatsapp'></i> 
-        <p>Join WhatsApp Channel</p>
-      </a>
-    </div>
-
-    <div class="contact-item">
-      <a href="mailto:besra.m9@gmail.com">
-        <i class='bx bx-envelope'></i> 
-        <p>besra.m9@gmail.com</p>
-      </a>
-    </div>
-
-    <div class="contact-item">
-      <a href="https://www.google.com/maps/search/?api=1&query=Adityapur+Jamshedpur" target="_blank">
-        <i class='bx bx-map'></i> 
-        <p>Adityapur, Jamshedpur</p>
-      </a>
-    </div>
-
-  </div>
-</section>
-
-</main>
-
-<footer>
-  © 2025-2026 | <strong> E4A Study Class</strong><br>Education For All
-  <span>Designed by <b>Maheshwar Besra</b></span>
-</footer>
-
-<script>
-  // STUDENT DATA
-  const students = [
-    { name: "Aditya Hansda", class: "Class 5", img: "Students/ah.png" },
-    { name: "Shankar Soy", class: "Class 1", img: "Students/sk.png" },
-    { name: "Kamal Soy", class: "Class 1", img: "Students/ks.png" },
-    { name: "Kunal Horo", class: "Class Pre-Nursery", img: "Students/kh.png" },
-    { name: "Krishna Hansda", class: "Class Nursery", img: "Students/krh.png" },
-    { name: "Kajal Kumari", class: "Class Pre-Nursery", img: "Students/kk.png" },
-    { name: "Naina Kumari", class: "Class Pre-Nursery", img: "Students/nk.png" }
-  ];
-
-  const grid = document.getElementById("studentGrid");
-  
-  // RENDER STUDENTS
-  students.forEach(s => {
-    const card = document.createElement("div");
-    card.className = "student-card reveal";
-    card.innerHTML = `
-      <img src="${s.img}" alt="${s.name}" onerror="this.src='E4A_logo.png'">
-      <h4>${s.name}</h4>
-      <p>${s.class}</p>
-    `;
-    grid.appendChild(card);
-  });
-
-  // SCROLL ANIMATION
-  const reveals = document.querySelectorAll(".reveal");
-  function revealOnScroll(){
-    reveals.forEach(el => {
-      const windowHeight = window.innerHeight;
-      const elementTop = el.getBoundingClientRect().top;
-      const elementVisible = 50;
-      if(elementTop < windowHeight - elementVisible){
-        el.classList.add("active");
-      }
-    });
-  }
-  window.addEventListener("scroll", revealOnScroll);
-  revealOnScroll(); 
-
-  // SERVICE WORKER REGISTRATION 
-  if("serviceWorker" in navigator){
-    navigator.serviceWorker.register("sw.js");
-  }
-
-  // ANDROID WEBVIEW INTERFACE
-  document.addEventListener("SwipeRefresh", function(){
-      location.reload();
-  });
-
-  function pageLoaded() {
-    if (typeof android !== 'undefined' && android.activity) {
-      android.activity.setRefreshing("refresh", false);
-    }
-  }
-</script>
-
-</body>
-</html>
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8
