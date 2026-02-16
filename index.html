@@ -76,15 +76,16 @@
       z-index: 2;
     }
 
-    /* --- DIAGONAL TRISHUL STYLES --- */
+       /* --- MAHA SHIVRATRI BACKGROUND STYLES --- */
     .trishul-bg {
       position: absolute;
-      top: -20px; 
-      left: 55%;
-      transform: translate(-50%, -50%) rotate(35deg); 
-      height: 340px; 
-      width: auto;
-      opacity: 1; 
+      top: 50%; /* Puts it perfectly in the vertical center of the header */
+      left: 50%; /* Puts it perfectly in the horizontal center */
+      transform: translate(-50%, -50%); /* Removed rotation so the text is upright! */
+      width: 95%; /* Makes it wide enough to show the flowers on the sides */
+      max-width: 450px; /* Stops it from getting too massive on big screens */
+      height: auto;
+      opacity: 0.25; /* Bright enough to see the flowers, but faded enough to read E4A */
       z-index: 0; 
       pointer-events: none; 
       object-fit: contain;
@@ -161,7 +162,7 @@
 <body onload="pageLoaded()">
 
 <header>
-  <img src="33046.png" class="trishul-bg" alt="Trishul Background">
+  <img src="download.png" class="trishul-bg" alt="Trishul Background">
   
   <img src="E4A_logo.png" class="main-logo" alt="E4A Logo">
   
