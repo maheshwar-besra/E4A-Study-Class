@@ -74,7 +74,6 @@
       z-index: 2;
     }
 
-    /* --- BULLETPROOF BACKGROUND STYLES --- */
         /* --- BULLETPROOF BACKGROUND STYLES FOR BOTH SIDES --- */
     
     /* Common settings for both images */
@@ -95,10 +94,10 @@
       object-position: 175% 50%; 
     }
 
-    /* The exact opposite LEFT side setting */
+    /* The LEFT side setting */
     .trishul-bg-left {
-      object-position: -75% 50%; 
-      /* This line flips the image like a mirror so they frame your logo beautifully! */
+      /* We set it to 175% (Right) so that when we flip it, it lands perfectly on the Left! */
+      object-position: 175% 50%; 
       transform: scaleX(-1); 
     }
 
