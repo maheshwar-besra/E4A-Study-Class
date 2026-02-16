@@ -1,4 +1,4 @@
-const CACHE_NAME = "e4a-class-v20260131-16"; // Change v1 to v2 when you update the site
+const CACHE_NAME = "e4a-class-v20260131-17"; // Change v1 to v2 when you update the site
 
 // Files to cache immediately
 const ASSETS = [
