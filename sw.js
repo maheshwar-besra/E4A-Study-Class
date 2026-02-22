@@ -7,7 +7,7 @@ const ASSETS = [
   "./manifest.json",
   "./E4A_logo.png",
   // Student Images (Ensure filenames match exactly)
-  "./Students/sk.png",
+  "./Students/ss.png",
   "./Students/ks.png",
   "./Students/kh.png", // Fixed typo from your previous list (kg -> kh based on array)
   "./Students/krh.png",
