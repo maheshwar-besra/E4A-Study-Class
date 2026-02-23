@@ -3,172 +3,303 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#000080">
+  <meta name="theme-color" content="#FF1493"> 
   <title>E4A Study Class</title>
 
   <link rel="manifest" href="manifest.json">
-
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   
   <style>
-    /* CSS VARIABLES */
     :root {
-      --primary: #000080; /* Navy Blue */
-      --saffron: #FF9933;
-      --green: #138808;
-      --bg: #f4f6f9;
+      --primary: #000080; 
+      --holi-pink: #FF1493;
+      --holi-yellow: #FFD700;
+      --holi-purple: #8A2BE2;
+      --holi-orange: #FF4500;
+      --bg: #ffffff; 
       --text: #333;
     }
 
     * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
-    html, body { height:100%; }
+    html, body { height:100%; background: var(--bg); overflow-x: hidden; }
     
-    body {
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      will-change: opacity; 
+    body { color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
+
+    /* FLOATING COLOR SPLASHES IN BACKGROUND */
+    .splash-container {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .splash {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.25;
+      animation: float 20s infinite alternate ease-in-out;
+    }
+    @keyframes float {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(100px, 150px) scale(1.3); }
     }
 
-    /* WEBVIEW & LINK FIXES */
-    input, textarea, html, a, button, div {
-      -webkit-tap-highlight-color: transparent !important; 
-      outline: none !important; 
-    }
-    
-    a:focus, a:active, a:visited, a:hover {
-      text-decoration: none;
-      color: inherit;
-      background: none !important;
-    }
-
-    /* MAIN CONTENT AREA */
-    main { flex: 1 0 auto; }
-
-    /* HEADER */
-    header {
-      background: linear-gradient(135deg, var(--saffron) 0%,var(--saffron) 15%, #FFFFFF 45%, var(--green) 100%);
-      text-align: center;
-      padding: 20px;
+    /* --- DYNAMIC HOLI HEADER --- */
+    .holi-header {
+      background: radial-gradient(circle at center top, #ffffff 0%, #f9f9f9 100%);
+      overflow: hidden;
       position: relative;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 30px 10px 40px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      border-bottom: 5px solid var(--holi-pink);
     }
 
-    header::after {
-      content: "";
-      display: block;
+    .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      min-height: 180px;
+    }
+
+    /* Children Styling */
+    .child {
+      width: 110px;
+      position: absolute;
+      bottom: 0;
+      z-index: 5;
+    }
+    .left-child { left: 0; }
+    .right-child { right: 0; }
+
+    .child img {
       width: 100%;
-      height: 3px;
-      background: var(--primary);
-      margin-top: 12px;
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.15));
     }
 
-    header img { width: 140px; margin-bottom: 10px; border-radius: 50%; background: white; padding: 3px; }
-    header h1 { font-size: 28px; font-weight: 700; color: #000; text-shadow: 1px 1px 2px rgba(255,255,255,0.5); }
-
-    /* HINDI TYPOGRAPHY */
-    .hindi { 
-      font-family: 'Noto Sans Devanagari', sans-serif; 
-      font-size: 1.15rem; 
-      font-weight: 500;   
-      line-height: 2.0;   
-      color: #444;        
-      text-align: justify; 
+    /* Logo Area */
+    .logo-area {
+      text-align: center;
+      position: relative;
+      z-index: 10;
+      padding-bottom: 20px;
     }
-    .hindi strong { font-weight: 700; color: #000; font-size: 1.18rem; }
-    
-    h3 { margin-bottom: 20px; color: #d35400; }
-    p { font-size: 1rem; line-height: 1.5; margin-bottom: 10px; }
+
+    .logo-wrapper {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .main-logo {
+      width: 120px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      background: #fff;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 10;
+      animation: logo-wiggle 4s infinite;
+    }
+
+    @keyframes logo-wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(4deg); }
+      75% { transform: rotate(-4deg); }
+    }
+
+    /* Pichkari Color Streams */
+    .stream {
+      position: absolute;
+      width: 0;
+      height: 10px;
+      border-radius: 10px;
+      z-index: 4;
+      opacity: 0.8;
+      animation: shoot 2s infinite ease-out;
+    }
+
+    /* Adjust stream positions to align with the children's "guns" */
+    .stream-left {
+      top: 35%;
+      left: 80px;
+      background: linear-gradient(to right, var(--holi-pink), var(--holi-orange));
+      transform-origin: left center;
+      transform: rotate(-18deg);
+    }
+
+    .stream-right {
+      top: 35%;
+      right: 80px;
+      background: linear-gradient(to left, var(--holi-purple), #00FFFF);
+      transform-origin: right center;
+      transform: rotate(18deg);
+    }
+
+    @keyframes shoot {
+      0% { width: 0; opacity: 1; }
+      50% { width: 180px; opacity: 1; }
+      100% { width: 220px; opacity: 0; }
+    }
+
+    /* Color Burst on Hit */
+    .burst {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 140px;
+      height: 140px;
+      margin-top: -70px;
+      margin-left: -70px;
+      border-radius: 50%;
+      opacity: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .burst-1 {
+      background: radial-gradient(circle, var(--holi-pink) 20%, transparent 70%);
+      animation: burst-anim 2s infinite 0.8s;
+    }
+
+    .burst-2 {
+      background: radial-gradient(circle, #00FFFF 20%, transparent 70%);
+      animation: burst-anim 2s infinite 1.8s;
+    }
+
+    @keyframes burst-anim {
+      0% { transform: scale(0.5); opacity: 0; }
+      30% { opacity: 0.7; }
+      100% { transform: scale(1.6); opacity: 0; }
+    }
+
+    .logo-area h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: 1.5px;
+      margin-top: 10px;
+      text-transform: uppercase;
+    }
 
     /* NAVIGATION */
-    nav ul { list-style: none; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 10px; }
-    nav ul li a { color: #000; text-decoration: none; font-weight: 600; transition: .3s; padding: 5px 10px; border-radius: 20px; }
-    nav ul li a:hover { background: rgba(0,0,0,0.05); color: var(--primary); }
+    nav ul { list-style: none; display: flex; justify-content: center; gap: 15px; margin-top: 10px; position: relative; z-index: 20; }
+    nav ul li a { 
+      color: #333; 
+      background: rgba(0,0,0,0.05); 
+      padding: 6px 14px; 
+      border-radius: 20px; 
+      font-size: 14px; 
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    nav ul li a:hover { background: var(--holi-pink); color: #fff; }
 
-    section { padding: 50px 20px; max-width: 1200px; margin: auto; }
+    /* SECTION STYLES */
+    section { padding: 40px 20px; max-width: 1100px; margin: auto; position: relative; z-index: 10; }
     h2 { 
       text-align: center; 
       color: var(--primary); 
-      margin-bottom: 40px; 
-      text-transform: uppercase; 
-      letter-spacing: 1px; 
-      border-bottom: 2px solid var(--saffron); 
+      margin-bottom: 30px; 
+      border-bottom: 4px solid var(--holi-yellow); 
       display: inline-block; 
-      padding-bottom: 5px; 
       position: relative; 
       left: 50%; 
       transform: translateX(-50%); 
     }
 
-    /* GRIDS & CARDS */
-    .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-    .box { background: #fff; padding: 30px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); text-align: center; border-top: 4px solid var(--green); }
+    .box { 
+      background: rgba(255, 255, 255, 0.95); 
+      padding: 25px; 
+      border-radius: 15px; 
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+      text-align: center; 
+      border-top: 5px solid var(--holi-purple); 
+      margin-bottom: 20px; 
+    }
+    
+    .hindi { font-family: 'Noto Sans Devanagari', sans-serif; color: #333; line-height: 1.8; }
 
-    .student-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
-    .student-card { background: #fff; padding: 20px; border-radius: 15px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.08); cursor: pointer; transition: .3s; border-bottom: 3px solid var(--saffron); }
-    .student-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
-    .student-card img { width: 100px; height: 100px; border-radius: 50%; margin-bottom: 10px; object-fit: cover; border: 3px solid #eee; }
+    /* GRIDS */
+    .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+
+    .student-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; }
+    .student-card { 
+      background: #fff; 
+      padding: 15px; 
+      border-radius: 15px; 
+      text-align: center; 
+      box-shadow: 0 5px 10px rgba(0,0,0,0.05); 
+      border-bottom: 4px solid var(--holi-orange); 
+      transition: 0.3s;
+    }
+    .student-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+    .student-card img { width: 90px; height: 90px; border-radius: 50%; border: 3px solid #eee; margin-bottom: 10px; object-fit: cover; }
     .student-card h4 { color: #2c3e50; font-size: 1.1rem; }
     .student-card p { font-size: 0.9rem; color: #7f8c8d; }
 
-    /* CONTACT SECTION UPDATED */
+    /* CONTACT SECTION */
     .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center; }
-    
-    .contact-item { 
-      padding: 15px; 
-      border-radius: 10px;
-    }
+    .contact-item a { text-decoration: none; color: inherit; display: block; padding: 10px; }
+    .contact-item i { font-size: 34px; color: var(--holi-pink); margin-bottom: 10px; display: block; }
+    .contact-item p { font-weight: 600; color: #000; margin: 0; }
 
-    .contact-item a {
-      text-decoration: none;
-      color: inherit;
-      display: block;
-    }
-    
-    .contact-item i { 
-      font-size: 34px; 
-      color: var(--primary); 
-      margin-bottom: 12px; 
-      display: block;
-      transition: transform 0.2s;
-    }
-    
-    .contact-item:active i {
-      transform: scale(0.9);
-    }
-    
-    /* BOLD TEXT FIX */
-    .contact-item p { 
-      color: #000; /* Pure black for maximum contrast */
-      font-weight: 600; /* Bold */
-      font-size: 1rem; /* Slightly larger */
-      margin: 0;
-      line-height: 1.4;
-    }
+    footer { background: #2c3e50; color: #fff; text-align: center; padding: 25px; margin-top: auto; position: relative; z-index: 10; font-size: 14px; }
+    footer span { display: block; font-size: 12px; opacity: .7; margin-top: 5px; }
 
-    footer { background: #2c3e50; color: #fff; text-align: center; padding: 20px 10px; font-size: 14px; margin-top: auto; }
-    footer span { display: block; font-size: 13px; opacity: .7; margin-top: 5px; }
-
-    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+    .reveal { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
     .reveal.active { opacity: 1; transform: none; }
 
-    @media(max-width: 600px) {
-      header img { width: 90px; }
-      header h1 { font-size: 22px; }
-      nav ul { gap: 10px; }
+    /* MOBILE RESPONSIVENESS */
+    @media (max-width: 650px) {
+      .child { width: 75px; }
+      .stream-left { left: 55px; transform: rotate(-25deg); }
+      .stream-right { right: 55px; transform: rotate(25deg); }
+      @keyframes shoot {
+        0% { width: 0; opacity: 1; }
+        50% { width: 100px; opacity: 1; }
+        100% { width: 130px; opacity: 0; }
+      }
+      .logo-area h1 { font-size: 22px; }
+      .main-logo { width: 100px; }
+      .header-container { min-height: 150px; }
     }
   </style>
 </head>
 <body onload="pageLoaded()">
 
-<header>
-  <img src="E4A_logo.png" alt="E4A Logo">
-  <h1>E4A  STUDY  CLASS</h1>
+<div class="splash-container" id="splashContainer"></div>
+
+<header class="holi-header">
+  <div class="header-container">
+    
+    <div class="child left-child">
+      <img src="https://cdn-icons-png.flaticon.com/512/9440/9440301.png" alt="Boy throwing color">
+      <div class="stream stream-left"></div>
+    </div>
+
+    <div class="logo-area">
+      <div class="logo-wrapper">
+        <img src="E4A_logo.png" alt="E4A Logo" class="main-logo" onerror="this.src='https://via.placeholder.com/120'">
+        <div class="burst burst-1"></div>
+        <div class="burst burst-2"></div>
+      </div>
+      <h1>E4A STUDY CLASS</h1>
+    </div>
+
+    <div class="child right-child">
+      <img src="https://cdn-icons-png.flaticon.com/512/9384/9384534.png" alt="Girl throwing color">
+      <div class="stream stream-right"></div>
+    </div>
+    
+  </div>
+
   <nav>
     <ul>
       <li><a href="#about">About</a></li>
@@ -179,76 +310,85 @@
 </header>
 
 <main>
-
-<section id="about">
-  <h2>About Us</h2>
-  <div class="about-grid">
-    <div class="box reveal">
-      <h3>🌟 <span class="hindi" style="font-weight:700;">हमारा दृष्टिकोण</span> (Vision)</h3>
-      <p class="hindi">हमारा दृष्टिकोण एक ऐसा शिक्षण वातावरण बनाना है जहाँ <strong>हर बच्चे को सीखने का समान अवसर मिले।</strong></p>
-      <p class="hindi">हम मानते हैं कि <strong>शिक्षा कोई विशेषाधिकार नहीं, बल्कि हर बच्चे का अधिकार है,</strong> और किसी भी छात्र को आर्थिक या सामाजिक कारणों से शिक्षा से वंचित नहीं रहना चाहिए।</p>
+  <section id="about">
+    <h2>About Us</h2>
+    <div class="about-grid">
+      <div class="box reveal" style="border-top-color: var(--holi-pink);">
+        <h3 style="color:var(--holi-pink);">🌸 हमारा दृष्टिकोण</h3>
+        <p class="hindi">हमारा दृष्टिकोण एक ऐसा शिक्षण वातावरण बनाना है जहाँ <strong>हर बच्चे को सीखने का समान अवसर मिले।</strong></p>
+        <p class="hindi">हम मानते हैं कि <strong>शिक्षा कोई विशेषाधिकार नहीं, बल्कि हर बच्चे का अधिकार है,</strong> और किसी भी छात्र को आर्थिक या सामाजिक कारणों से शिक्षा से वंचित नहीं रहना चाहिए।</p>
+      </div>
+      <div class="box reveal" style="border-top-color: var(--holi-orange);">
+        <h3 style="color:var(--holi-orange);">🎯 हमारा लक्ष्य</h3>
+        <p class="hindi">हमारा लक्ष्य सभी विद्यार्थियों को <strong>गुणवत्तापूर्ण और मूल्य-आधारित शिक्षा</strong> प्रदान करना है। हम बच्चों की <strong>मजबूत नींव, आत्मविश्वास, अनुशासन और जिज्ञासा</strong> विकसित करने पर ध्यान देते हैं।</p>
+        <p class="hindi"><strong>E4A Study Class</strong> में हम पूरी निष्ठा से <strong>“Education For All”</strong> के सिद्धांत पर कार्य करते हैं।</p>
+      </div>
     </div>
-    <div class="box reveal">
-      <h3>🎯 <span class="hindi" style="font-weight:700;">हमारा लक्ष्य</span> (Goal)</h3>
-      <p class="hindi">हमारा लक्ष्य सभी विद्यार्थियों को <strong>गुणवत्तापूर्ण और मूल्य-आधारित शिक्षा</strong> प्रदान करना है।
-      हम बच्चों की <strong>मजबूत नींव, आत्मविश्वास, अनुशासन और जिज्ञासा </strong>विकसित करने पर ध्यान देते हैं, ताकि वे न केवल परीक्षाओं में अच्छा प्रदर्शन करें बल्कि एक जिम्मेदार और जागरूक नागरिक भी बनें।</p>
-      <p class="hindi"><strong>E4A Study Class</strong> में हम पूरी निष्ठा से <strong>“Education For All - सबके लिए शिक्षा”</strong> के सिद्धांत पर कार्य करते हैं।</p>
+  </section>
+
+  <section id="students">
+    <h2>Student Corner</h2>
+    <div class="student-grid" id="studentGrid"></div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <div class="box contact-grid reveal" style="border-top-color: var(--holi-purple);">
+      <div class="contact-item">
+        <a href="tel:8210660831">
+          <i class='bx bx-phone'></i> 
+          <p>8210660831</p>
+        </a>
+      </div>
+      <div class="contact-item">
+        <a href="https://whatsapp.com/channel/0029Vb7H8WC5PO17EFx61S38">
+          <i class='bx bxl-whatsapp' style="color: #25D366;"></i> 
+          <p>Join WhatsApp Channel</p>
+        </a>
+      </div>
+      <div class="contact-item">
+        <a href="mailto:besra.m9@gmail.com">
+          <i class='bx bx-envelope' style="color: var(--holi-orange);"></i> 
+          <p>besra.m9@gmail.com</p>
+        </a>
+      </div>
+      <div class="contact-item">
+        <a href="https://www.google.com/maps/search/?api=1&query=Adityapur+Jamshedpur" target="_blank">
+          <i class='bx bx-map' style="color: var(--primary);"></i> 
+          <p>Adityapur, Jamshedpur</p>
+        </a>
+      </div>
     </div>
-  </div>
-</section>
-
-<section id="students">
-  <h2>Student Corner</h2>
-  <div class="student-grid" id="studentGrid"></div>
-</section>
-
-<section id="contact">
-  <h2>Contact Us</h2>
-  <div class="box contact-grid reveal">
-    
-    <div class="contact-item">
-      <a href="tel:8210660831">
-        <i class='bx bx-phone'></i> 
-        <p>8210660831</p>
-      </a>
-    </div>
-
-    <div class="contact-item">
-      <a href="https://whatsapp.com/channel/0029Vb7H8WC5PO17EFx61S38">
-        <i class='bx bxl-whatsapp'></i> 
-        <p>Join WhatsApp Channel</p>
-      </a>
-    </div>
-
-    <div class="contact-item">
-      <a href="mailto:besra.m9@gmail.com">
-        <i class='bx bx-envelope'></i> 
-        <p>besra.m9@gmail.com</p>
-      </a>
-    </div>
-
-    <div class="contact-item">
-      <a href="https://www.google.com/maps/search/?api=1&query=Adityapur+Jamshedpur" target="_blank">
-        <i class='bx bx-map'></i> 
-        <p>Adityapur, Jamshedpur</p>
-      </a>
-    </div>
-
-  </div>
-</section>
-
+  </section>
 </main>
 
 <footer>
-  © 2025-2026 | <strong> E4A Study Class</strong><br>Education For All
+  © 2025-2026 | <strong>E4A Study Class</strong><br>Education For All
   <span>Designed by <b>Maheshwar Besra</b></span>
 </footer>
 
 <script>
+  // GENERATE BACKGROUND SPLASHES DYNAMICALLY
+  const bgColors = ['#FF1493', '#FFD700', '#8A2BE2', '#FF4500', '#138808', '#00FFFF'];
+  const container = document.getElementById('splashContainer');
+  for (let i = 0; i < 10; i++) {
+    const splash = document.createElement('div');
+    splash.className = 'splash';
+    const size = Math.random() * 250 + 150;
+    splash.style.width = size + 'px';
+    splash.style.height = size + 'px';
+    splash.style.background = bgColors[Math.floor(Math.random() * bgColors.length)];
+    splash.style.top = Math.random() * 100 + '%';
+    splash.style.left = Math.random() * 100 + '%';
+    splash.style.animationDelay = (Math.random() * 5) + 's';
+    splash.style.animationDuration = (Math.random() * 10 + 15) + 's';
+    container.appendChild(splash);
+  }
+
   // STUDENT DATA
   const students = [
     { name: "Aditya Hansda", class: "Class 5", img: "Students/ah.png" },
-    { name: "Shankar Soy", class: "Class 1", img: "Students/ss.png" },
+    { name: "Shankar Soy", class: "Class 1", img: "Students/sk.png" },
     { name: "Kamal Soy", class: "Class 1", img: "Students/ks.png" },
     { name: "Kunal Horo", class: "Class Pre-Nursery", img: "Students/kh.png" },
     { name: "Krishna Hansda", class: "Class Nursery", img: "Students/krh.png" },
@@ -257,11 +397,13 @@
   ];
 
   const grid = document.getElementById("studentGrid");
-  
-  // RENDER STUDENTS
-  students.forEach(s => {
+  const cardColors = ['#FF1493', '#FFD700', '#8A2BE2', '#FF4500', '#138808'];
+
+  // RENDER STUDENTS WITH COLORFUL BORDERS
+  students.forEach((s, index) => {
     const card = document.createElement("div");
     card.className = "student-card reveal";
+    card.style.borderBottomColor = cardColors[index % cardColors.length];
     card.innerHTML = `
       <img src="${s.img}" alt="${s.name}" onerror="this.src='E4A_logo.png'">
       <h4>${s.name}</h4>
@@ -276,21 +418,17 @@
     reveals.forEach(el => {
       const windowHeight = window.innerHeight;
       const elementTop = el.getBoundingClientRect().top;
-      const elementVisible = 50;
-      if(elementTop < windowHeight - elementVisible){
-        el.classList.add("active");
-      }
+      if(elementTop < windowHeight - 50) el.classList.add("active");
     });
   }
   window.addEventListener("scroll", revealOnScroll);
-  revealOnScroll(); 
+  revealOnScroll();
 
-  // SERVICE WORKER REGISTRATION 
+  // SERVICE WORKER & ANDROID WEBVIEW INTERFACE
   if("serviceWorker" in navigator){
-    navigator.serviceWorker.register("sw.js");
+    navigator.serviceWorker.register("sw.js").catch(err => console.log(err));
   }
 
-  // ANDROID WEBVIEW INTERFACE
   document.addEventListener("SwipeRefresh", function(){
       location.reload();
   });
@@ -301,6 +439,5 @@
     }
   }
 </script>
-
 </body>
 </html>
