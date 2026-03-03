@@ -1,4 +1,4 @@
-const CACHE_NAME = "e4a-class-v20260222-10"; // Change v1 to v2 when you update the site
+const CACHE_NAME = "e4a-class-v20260222-11"; // Change v1 to v2 when you update the site
 
 // Files to cache immediately
 const ASSETS = [
@@ -8,6 +8,7 @@ const ASSETS = [
   "./E4A_logo.png",
   // Student Images (Ensure filenames match exactly)
   "./Students/ss.png",
+  "./Students/sk.png",
   "./Students/ks.png",
   "./Students/kh.png", // Fixed typo from your previous list (kg -> kh based on array)
   "./Students/krh.png",
