@@ -22,7 +22,7 @@
       --cyan: #00FFFF;    /* Bright Blue */
       --lime: #32CD32;    /* Bright Green */
       --orange: #FF4500;  /* Bright Orange */
-      --bg: #FFF0F5;      /* Lavender Blush background for festive feel */
+      --bg: #FFF0F5;      /* Lavender Blush background */
       --text: #333;
     }
 
@@ -38,7 +38,6 @@
       will-change: opacity; 
     }
 
-    /* WEBVIEW & LINK FIXES */
     input, textarea, html, a, button, div {
       -webkit-tap-highlight-color: transparent !important; 
       outline: none !important; 
@@ -52,21 +51,24 @@
 
     main { flex: 1 0 auto; }
 
-    /* HEADER: BOLDER SPLASHES */
+    /* =========================================
+       HEADER: FIXED HEIGHT & BOLD SPLASHES 
+       ========================================= */
     header {
       background-color: #ffffff;
-      /* Bold color splatters */
+      /* Made the splashes much larger (60%) and more vibrant */
       background-image: 
-        radial-gradient(circle at 15% 25%, rgba(255, 20, 147, 0.5) 0%, transparent 40%),
-        radial-gradient(circle at 85% 75%, rgba(0, 255, 255, 0.5) 0%, transparent 40%),
-        radial-gradient(circle at 50% 10%, rgba(255, 215, 0, 0.5) 0%, transparent 40%),
-        radial-gradient(circle at 80% 20%, rgba(50, 205, 50, 0.5) 0%, transparent 40%),
-        radial-gradient(circle at 20% 80%, rgba(138, 43, 226, 0.5) 0%, transparent 40%);
+        radial-gradient(circle at 0% 0%, rgba(255, 20, 147, 0.45) 0%, transparent 60%),
+        radial-gradient(circle at 100% 100%, rgba(0, 255, 255, 0.45) 0%, transparent 60%),
+        radial-gradient(circle at 50% 0%, rgba(255, 215, 0, 0.45) 0%, transparent 60%),
+        radial-gradient(circle at 100% 0%, rgba(50, 205, 50, 0.45) 0%, transparent 60%),
+        radial-gradient(circle at 0% 100%, rgba(138, 43, 226, 0.45) 0%, transparent 60%);
+      background-size: cover;
       text-align: center;
-      padding: 20px;
+      padding: 25px 20px 20px 20px;
       position: relative;
       box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-      overflow: hidden;
+      flex-shrink: 0;
     }
 
     /* Multi-color divider line */
@@ -76,7 +78,7 @@
       width: 100%;
       height: 6px;
       background: linear-gradient(90deg, var(--magenta), var(--gold), var(--lime), var(--cyan), var(--primary));
-      margin-top: 15px;
+      margin-top: 20px;
       border-radius: 3px;
     }
 
@@ -86,7 +88,8 @@
       justify-content: center;
       align-items: center;
       gap: 5px;
-      margin-bottom: 5px;
+      margin-bottom: 15px; /* Adds space before text */
+      flex-wrap: nowrap;
     }
     
     .pichkari {
@@ -95,7 +98,7 @@
     }
 
     .gun {
-      font-size: 35px;
+      font-size: 38px;
       line-height: 1;
       filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2));
       animation: pump 1s ease-in-out infinite alternate;
@@ -112,21 +115,24 @@
       0% { transform: scaleX(-1) translateY(0); }
       100% { transform: scaleX(-1) translateY(-3px); }
     }
+    
     .pichkari.left .gun { animation: pump-left 1s ease-in-out infinite alternate; }
 
     .stream {
       width: 45px;
       height: 8px;
       border-radius: 4px;
-      margin-top: -10px; 
+      margin-top: -12px; 
     }
 
+    /* Left stream shoots right */
     .stream-left {
       background: repeating-linear-gradient(90deg, var(--magenta) 0, var(--magenta) 12px, transparent 12px, transparent 18px);
       animation: shoot-left 0.3s linear infinite;
       margin-left: -5px;
     }
 
+    /* Right stream shoots left */
     .stream-right {
       background: repeating-linear-gradient(-90deg, var(--cyan) 0, var(--cyan) 12px, transparent 12px, transparent 18px);
       animation: shoot-right 0.3s linear infinite;
@@ -136,23 +142,36 @@
     @keyframes shoot-left { to { background-position: 18px 0; } }
     @keyframes shoot-right { to { background-position: -18px 0; } }
 
-    header img { width: 120px; border-radius: 50%; background: white; padding: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 2; position: relative; }
+    /* LOGO: Fixed Height prevents the header from collapsing */
+    header img { 
+      width: 120px; 
+      height: 120px; 
+      object-fit: cover;
+      border-radius: 50%; 
+      background: white; 
+      padding: 4px; 
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
+      z-index: 2; 
+      position: relative; 
+      display: block;
+    }
     
-    /* WHITE TEXT WITH BOLD OUTLINE */
+    /* WHITE TEXT WITH BOLD BLACK OUTLINE */
     header h1 { 
       font-size: 28px; 
       font-weight: 700; 
-      color: #ffffff; 
-      letter-spacing: 1px;
+      color: #ffffff; /* White text */
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
       text-shadow: 
-        -1px -1px 0 #000,  
-         1px -1px 0 #000,
-        -1px  1px 0 #000,
-         1px  1px 0 #000,
-         3px  3px 5px rgba(0,0,0,0.6); 
+        -1.5px -1.5px 0 #000,  
+         1.5px -1.5px 0 #000,
+        -1.5px  1.5px 0 #000,
+         1.5px  1.5px 0 #000,
+         4px 4px 6px rgba(0,0,0,0.5); /* Heavy drop shadow */
     }
 
-    /* HOLI GREETING BANNER - FIXED EMOJI ISSUE */
+    /* HOLI GREETING BANNER */
     .holi-banner {
       text-align: center;
       padding: 15px;
@@ -163,7 +182,7 @@
       animation: pulseText 2s infinite;
     }
 
-    /* Applying gradient ONLY to the text so emojis stay normal */
+    /* Gradient on text, leaving emojis full color */
     .gradient-text {
       color: transparent;
       background: linear-gradient(90deg, var(--magenta), var(--primary), var(--lime));
@@ -209,7 +228,7 @@
     .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
     .box { background: #fff; padding: 30px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.08); text-align: center; border-top: 5px solid var(--lime); border-bottom: 5px solid var(--gold); }
 
-    /* STUDENTS GRID */
+    /* STUDENTS GRID - TOP BORDERS APPLIED HERE */
     .student-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
     .student-card { 
       background: #fff; 
@@ -221,6 +240,7 @@
       transition: .3s; 
       position: relative; 
       overflow: hidden; 
+      /* JavaScript adds the unique top borders */
     }
     
     .student-card:hover { transform: translateY(-8px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
@@ -256,10 +276,10 @@
 
     @media(max-width: 600px) {
       .header-graphics { gap: 2px; }
-      .gun { font-size: 30px; }
+      .gun { font-size: 28px; }
       .stream { width: 30px; margin-top: -8px; }
-      header img { width: 90px; }
-      header h1 { font-size: 22px; }
+      header img { width: 90px; height: 90px; }
+      header h1 { font-size: 24px; }
       nav ul { gap: 10px; }
       .holi-banner { font-size: 1.2rem; }
     }
@@ -277,7 +297,7 @@
       <div class="stream stream-left"></div>
     </div>
     
-    <img src="E4A_logo.png" alt="E4A Logo">
+    <img src="E4A_logo.png" alt="E4A Logo" onerror="this.src='https://via.placeholder.com/120x120?text=E4A+Logo'">
     
     <div class="pichkari right">
       <div class="stream stream-right"></div>
@@ -285,7 +305,7 @@
     </div>
   </div>
 
-  <h1>E4A  STUDY  CLASS</h1>
+  <h1>E4A &nbsp;STUDY &nbsp;CLASS</h1>
   
   <nav>
     <ul>
@@ -299,14 +319,14 @@
 <main>
 
 <div class="holi-banner">
-  🫟 <span class="gradient-text">Happy Holi to All Students & Parents!</span> 
+  🎨 <span class="gradient-text">Happy Holi to All Students & Parents!</span> 🌈
 </div>
 
 <section id="about">
   <h2>About Us</h2>
   <div class="about-grid">
     <div class="box reveal">
-      <h3>🌸 <span class="hindi" style="font-weight:700;">हमारा दृष्टिकोण</span> (Vision)</h3>
+      <h3>🌟 <span class="hindi" style="font-weight:700;">हमारा दृष्टिकोण</span> (Vision)</h3>
       <p class="hindi">हमारा दृष्टिकोण एक ऐसा शिक्षण वातावरण बनाना है जहाँ <strong>हर बच्चे को सीखने का समान अवसर मिले।</strong></p>
       <p class="hindi">हम मानते हैं कि <strong>शिक्षा कोई विशेषाधिकार नहीं, बल्कि हर बच्चे का अधिकार है,</strong> और किसी भी छात्र को आर्थिक या सामाजिक कारणों से शिक्षा से वंचित नहीं रहना चाहिए।</p>
     </div>
@@ -380,16 +400,16 @@
 
   const grid = document.getElementById("studentGrid");
   
-  // RENDER STUDENTS WITH TOP BORDER
+  // RENDER STUDENTS WITH THICK TOP BORDER
   students.forEach(s => {
     const card = document.createElement("div");
     card.className = "student-card reveal";
     
-    // Applying the unique color to the TOP border based on your red markings
+    // Applying the unique color to the TOP border based on your screenshots
     card.style.borderTop = `6px solid ${s.color}`;
     
     card.innerHTML = `
-      <img src="${s.img}" alt="${s.name}" onerror="this.src='E4A_logo.png'">
+      <img src="${s.img}" alt="${s.name}" onerror="this.src='https://via.placeholder.com/100x100?text=No+Img'">
       <h4>${s.name}</h4>
       <p>${s.class}</p>
     `;
