@@ -87,9 +87,10 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 100px;
-      margin-bottom: 15px; /* Adds space before text */
+      gap: 15px; /* Restored to a sensible gap so it fits on screens */
+      margin-bottom: 15px; 
       flex-wrap: nowrap;
+      width: 100%;
     }
     
     .pichkari {
@@ -119,10 +120,11 @@
     .pichkari.left .gun { animation: pump-left 1s ease-in-out infinite alternate; }
 
     .stream {
-      width: 350px; /* Made longer for the rainbow effect */
+      width: 80px; /* Longer stream that actually fits on mobile */
       height: 10px;
       border-radius: 5px;
       margin-top: -12px; 
+      flex-shrink: 0; /* THIS MAGIC LINE PREVENTS IT FROM DISAPPEARING */
     }
 
     /* Left stream shoots right - NOW MULTICOLOR */
@@ -154,7 +156,7 @@
       z-index: 2; 
       position: relative; 
       display: block;
-      animation: logoColorSplash 2s infinite alternate; /* ADDED WATER EFFECT */
+      animation: logoColorSplash 2s infinite alternate; 
     }
 
     /* ADDED LOGO WATER GLOW EFFECT */
@@ -168,7 +170,7 @@
     header h1 { 
       font-size: 28px; 
       font-weight: 700; 
-      color: #ffffff; /* White text */
+      color: #ffffff; 
       letter-spacing: 1.5px;
       text-transform: uppercase;
       text-shadow: 
@@ -176,7 +178,7 @@
          1.5px -1.5px 0 #000,
         -1.5px  1.5px 0 #000,
          1.5px  1.5px 0 #000,
-         4px 4px 6px rgba(0,0,0,0.5); /* Heavy drop shadow */
+         4px 4px 6px rgba(0,0,0,0.5); 
     }
 
     /* HOLI GREETING BANNER - BOUNCE EFFECT ADDED */
@@ -187,10 +189,9 @@
       max-width: 800px;
       font-size: 1.5rem;
       font-weight: bold;
-      animation: bounceText 2s infinite; /* Changed from pulseText */
+      animation: bounceText 2s infinite; 
     }
 
-    /* Gradient on text, leaving emojis full color */
     .gradient-text {
       color: transparent;
       background: linear-gradient(90deg, var(--magenta), var(--primary), var(--lime));
@@ -230,7 +231,7 @@
       transition: all 0.3s ease; 
       padding: 6px 22px; 
       border-radius: 25px; 
-      background: transparent; /* No white background */
+      background: transparent; 
       font-size: 15px;
     }
 
@@ -283,7 +284,7 @@
     .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
     .box { background: #fff; padding: 30px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.08); text-align: center; border-top: 5px solid var(--lime); border-bottom: 5px solid var(--gold); }
 
-    /* STUDENTS GRID - TOP BORDERS APPLIED HERE */
+    /* STUDENTS GRID */
     .student-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
     .student-card { 
       background: #fff; 
@@ -295,7 +296,6 @@
       transition: .3s; 
       position: relative; 
       overflow: hidden; 
-      /* JavaScript adds the unique top borders */
     }
     
     .student-card:hover { transform: translateY(-8px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
@@ -329,10 +329,11 @@
       z-index: 9999;
     }
 
+    /* MOBILE QUERY TO PREVENT BREAKING ON SMALL SCREENS */
     @media(max-width: 600px) {
-      .header-graphics { gap: 30px; }
-      .gun { font-size: 28px; }
-      .stream { width: 30px; margin-top: -8px; }
+      .header-graphics { gap: 5px; } /* Ensures guns stay on screen */
+      .gun { font-size: 32px; }
+      .stream { width: 55px; margin-top: -10px; } /* Adjusted perfectly for phone widths */
       header img { width: 90px; height: 90px; }
       header h1 { font-size: 24px; }
       nav ul { gap: 10px; }
@@ -445,7 +446,7 @@
   // STUDENT DATA
   const students = [
     { name: "Aditya Hansda", class: "Class 5", img: "Students/ah.png", color: "var(--magenta)" },
-    { name: "Shankar Soy", class: "Class 1", img: "Students/ss.png", color: "var(--gold)" },
+    { name: "Shankar Soy", class: "Class 1", img: "Students/sk.png", color: "var(--gold)" },
     { name: "Kamal Soy", class: "Class 1", img: "Students/ks.png", color: "var(--lime)" },
     { name: "Kunal Horo", class: "Class Pre-Nursery", img: "Students/kh.png", color: "var(--cyan)" },
     { name: "Krishna Hansda", class: "Class Nursery", img: "Students/krh.png", color: "var(--primary)" },
@@ -455,12 +456,11 @@
 
   const grid = document.getElementById("studentGrid");
   
-  // RENDER STUDENTS WITH THICK TOP BORDER
+  // RENDER STUDENTS
   students.forEach(s => {
     const card = document.createElement("div");
     card.className = "student-card reveal";
     
-    // Applying the unique color to the TOP border based on your screenshots
     card.style.borderTop = `6px solid ${s.color}`;
     
     card.innerHTML = `
