@@ -345,7 +345,10 @@
 <body onload="pageLoaded()">
 
 <canvas id="holiCanvas"></canvas>
-
+<audio id="holiAudio" loop>
+  <source src="holi-music.mp3" type="audio/mpeg">
+</audio>
+  
 <header>
   
   <div class="header-graphics">
@@ -580,6 +583,26 @@
       android.activity.setRefreshing("refresh", false);
     }
   }
+    // ==========================================
+  // BACKGROUND MUSIC PLAY LOGIC
+  // ==========================================
+  const bgMusic = document.getElementById('holiAudio');
+  let musicStarted = false;
+
+  function startMusic() {
+    if (!musicStarted && bgMusic.paused) {
+      bgMusic.play().then(() => {
+        musicStarted = true;
+      }).catch(err => {
+        console.log("Audio autoplay was prevented by browser: ", err);
+      });
+    }
+  }
+
+  // Trigger music on the first tap/click anywhere on the screen
+  window.addEventListener('click', startMusic);
+  window.addEventListener('touchstart', startMusic);
+  
 </script>
 
 </body>
