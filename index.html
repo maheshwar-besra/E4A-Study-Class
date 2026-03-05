@@ -90,19 +90,19 @@
       position: relative;
     }
     
-    /* The Red Blood Drop Container - with Bounce Animation */
+    /* The Transparent Image Blood Drop Container */
     .blood-drop-container {
       position: relative;
       width: 160px; 
-      height: 200px; 
+      height: 220px; /* Slightly taller to accommodate the full drop shape */
       
       /* Make sure this image is uploaded to your GitHub! */
       background-image: url('transparent_blood_drop.png'); 
       background-size: contain;
       background-repeat: no-repeat;
-      background-position: center top;
+      background-position: center bottom;
       
-      margin: -20px auto 30px; 
+      margin: -10px auto 25px; 
       z-index: 2;
       filter: drop-shadow(0 15px 15px rgba(229, 57, 53, 0.3)); 
       
@@ -110,18 +110,18 @@
       animation: realisticBounce 4s infinite ease-in-out; 
     }
 
-    /* THE LOGO: Stays perfectly round inside the drop */
-    .blood-drop-container img {
+    /* THE LOGO: Positioned in the 'belly' of the drop */
+    .blood-drop-container img.logo-inside {
       position: absolute;
-      top: 55%; /* Adjust this percentage if you need to move the logo slightly up or down inside the drop */
+      top: 63%; /* Pushes logo down into the widest part of the blood drop */
       left: 50%;
-      width: 110px; 
-      height: 110px; 
+      width: 95px; /* Sized perfectly to fit inside the red borders */
+      height: 95px; 
       border-radius: 50%;
       transform: translate(-50%, -50%); 
       background: white;
-      border: 4px solid white;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      border: 3px solid white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
       object-fit: cover;
       z-index: 3;
     }
@@ -276,9 +276,10 @@
       z-index: 9999;
     }
 
+    /* MOBILE OPTIMIZATION */
     @media(max-width: 600px) {
-      .blood-drop-container { width: 130px; height: 160px; } 
-      .blood-drop-container img { width: 90px; height: 90px; top: 50%; } 
+      .blood-drop-container { width: 140px; height: 190px; } 
+      .blood-drop-container img.logo-inside { width: 85px; height: 85px; top: 62%; } 
       header h1 { font-size: 24px; }
       nav ul { gap: 10px; }
     }
@@ -296,7 +297,7 @@
   
   <div class="header-graphics">
     <div class="blood-drop-container">
-      <img src="E4A_logo.png" alt="E4A Logo" onerror="this.src='https://via.placeholder.com/120x120?text=E4A+Logo'">
+      <img class="logo-inside" src="E4A_logo.png" alt="E4A Logo" onerror="this.src='https://via.placeholder.com/120x120?text=E4A+Logo'">
     </div>
   </div>
 
@@ -314,7 +315,7 @@
 <main>
 
 <div class="woman-day-image-container reveal">
-    <img id="womanDayImage" src="womans_day_banner.png" alt="Woman's Day Celebration">
+    <img id="womanDayImage" src="womans_day_banner.png" alt="Woman's Day Celebration" onerror="this.src='https://via.placeholder.com/1000x350/FF1493/FFFFFF?text=Upload+Womans+Day+Banner+Here'">
 </div>
 
 <section id="about">
