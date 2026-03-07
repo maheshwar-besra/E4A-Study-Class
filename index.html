@@ -165,10 +165,7 @@
     .womans-day-slogan .title {
       font-size: 1.5rem;
       font-weight: 700;
-      background: linear-gradient(90deg, var(--magenta), #8B0000);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      color: var(--magenta); /* Changed to solid pink as requested */
       margin-bottom: 5px;
     }
 
@@ -208,7 +205,7 @@
       display: inline-block;
     }
 
-    /* HINDI TYPOGRAPHY (For About Us section) */
+    /* HINDI TYPOGRAPHY */
     .hindi { 
       font-family: 'Noto Sans Devanagari', sans-serif; 
       font-size: 1.15rem; 
@@ -465,7 +462,7 @@
   revealOnScroll(); 
 
   // ==========================================
-  // FESTIVE COLOR SPLASH ANIMATION (Silent Version)
+  // FALLING FLOWER SHOWER ANIMATION
   // ==========================================
   const canvas = document.getElementById('holiCanvas');
   const ctx = canvas.getContext('2d');
@@ -477,80 +474,101 @@
     canvas.height = window.innerHeight;
   });
 
-  const particles = [];
-  const colors = ['#FF1493', '#8A2BE2', '#32CD32', '#00FFFF', '#B882FF'];
+  const flowers = [];
+  const flowerEmojis = ['🌸', '🌺', '🌼', '💮', '🌷'];
+  const maxFlowers = 35; // Number of flowers on screen
 
-  class Particle {
-    constructor(x, y) {
-      this.x = x;
-      this.y = y;
-      this.size = Math.random() * 8 + 2;
-      this.speedX = Math.random() * 6 - 3;
-      this.speedY = Math.random() * 6 - 3;
-      this.color = colors[Math.floor(Math.random() * colors.length)];
-      this.opacity = 1;
-    }
-    update() {
-      this.x += this.speedX;
-      this.y += this.speedY;
-      this.opacity -= 0.02; 
-      this.size += 0.1; 
-    }
-    draw() {
-      ctx.globalAlpha = this.opacity;
-      ctx.fillStyle = this.color;
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fill();
-    }
-  }
-
-  function handleParticles() {
-    for (let i = 0; i < particles.length; i++) {
-      particles[i].update();
-      particles[i].draw();
-      if (particles[i].opacity <= 0.1) {
-        particles.splice(i, 1);
-        i--;
+  class Flower {
+    constructor(isInitialLoad = false) {
+      this.reset();
+      // On initial load, spread them all over the screen randomly
+      if (isInitialLoad) {
+        this.y = Math.random() * canvas.height;
       }
     }
-  }
+    
+    reset() {
+      this.x = Math.random() * canvas.width;
+      this.y = -50; // Start slightly above the screen
+      this.size = Math.random() * 15 + 15; // Random size between 15 and 30
+      this.speedY = Math.random() * 2 + 1; // Falling speed
+      this.speedX = Math.random() * 1 - 0.5; // Slight drift left/right
+      this.emoji = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
+      this.rotation = Math.random() * 360;
+      this.rotationSpeed = (Math.random() - 0.5) * 2; // Spinning speed
+    }
 
-  function createBurst(x, y) {
-    for (let i = 0; i < 40; i++) {
-      particles.push(new Particle(x, y));
+    update() {
+      this.y += this.speedY;
+      this.x += this.speedX;
+      this.rotation += this.rotationSpeed;
+
+      // When it falls off the bottom, bring it back to the top
+      if (this.y > canvas.height + 50) {
+        this.reset();
+      }
+    }
+
+    draw() {
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.rotation * Math.PI / 180);
+      ctx.font = this.size + 'px Arial';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(this.emoji, 0, 0);
+      ctx.restore();
     }
   }
 
-  // BURST TRIGGER ONLY (No Audio/Music logic here)
+  // Populate initial falling flowers
+  for (let i = 0; i < maxFlowers; i++) {
+    flowers.push(new Flower(true));
+  }
+
+  // Draw the animation frame by frame
+  function animateFlowers() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    flowers.forEach(flower => {
+      flower.update();
+      flower.draw();
+    });
+    requestAnimationFrame(animateFlowers);
+  }
+  animateFlowers();
+
+  // Add extra jumping flowers when the user taps/clicks the screen!
+  function createTapFlowers(x, y) {
+    for(let i=0; i<5; i++){
+        let f = new Flower();
+        f.x = x;
+        f.y = y;
+        // Make them "jump" up slightly before falling
+        f.speedY = Math.random() * -3 - 2; 
+        f.speedX = Math.random() * 4 - 2;
+        flowers.push(f);
+    }
+    // Prevent too many flowers from causing lag
+    if(flowers.length > 70) {
+        flowers.splice(0, flowers.length - 70);
+    }
+  }
+
   window.addEventListener('click', (e) => {
-    createBurst(e.x, e.y);
+    createTapFlowers(e.clientX, e.clientY);
   });
   
   window.addEventListener('touchstart', (e) => {
-    createBurst(e.touches[0].clientX, e.touches[0].clientY);
+    createTapFlowers(e.touches[0].clientX, e.touches[0].clientY);
   });
 
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    handleParticles();
-    requestAnimationFrame(animate);
-  }
-  animate();
-
-  // Initial burst animation on load
-  setTimeout(() => {
-    createBurst(window.innerWidth / 2, window.innerHeight / 3);
-    setTimeout(() => createBurst(window.innerWidth / 3, window.innerHeight / 2), 300);
-    setTimeout(() => createBurst(window.innerWidth / 1.5, window.innerHeight / 2.5), 600);
-  }, 500);
-
-  // SERVICE WORKER REGISTRATION 
+  // ==========================================
+  // SERVICE WORKER & APP LOGIC
+  // ==========================================
   if("serviceWorker" in navigator){
     navigator.serviceWorker.register("sw.js");
   }
 
-  // ANDROID WEBVIEW INTERFACE
   document.addEventListener("SwipeRefresh", function(){
       location.reload();
   });
