@@ -13,7 +13,9 @@ const ASSETS = [
   "./Students/kh.png", // Fixed typo from your previous list (kg -> kh based on array)
   "./Students/krh.png",
   "./Students/kk.png",
-  "./Students/nk.png"
+  "./Students/nk.png",
+  "./womans_day_banner.png",
+  "./transparent_blood_drop.png"
 ];
 
 // 1. Install & Cache Local Assets
