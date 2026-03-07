@@ -49,6 +49,15 @@
       background: none !important;
     }
 
+    /* =========================================
+       HERO SECTION: 100% VIEWPORT HEIGHT
+       ========================================= */
+    .hero-section {
+      min-height: 100vh; /* Forces the header + banner to take exactly 1 screen height */
+      display: flex;
+      flex-direction: column;
+    }
+
     main { flex: 1 0 auto; }
 
     /* =========================================
@@ -150,21 +159,25 @@
     }
 
     /* =========================================
-       WOMAN'S DAY IMAGE CONTAINER (Viewport Fixed)
+       WOMAN'S DAY IMAGE CONTAINER (Fills space)
        ========================================= */
     .woman-day-image-container {
       width: 100%;
       max-width: 900px;
-      margin: 20px auto 0; /* Reduced top margin to pull it up slightly */
-      text-align: center;
-      padding: 0 15px;
+      margin: 0 auto; 
+      padding: 20px 15px;
+      /* This flex-grow stretches the container to push "About Us" perfectly off the screen */
+      flex-grow: 1; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .woman-day-image-container img {
       width: 100%;
       max-width: 100%;
       height: auto;
-      max-height: 40vh; /* Reduced to 40% of viewport height to stop it from shifting content down too much */
+      max-height: 45vh; /* Prevents banner from getting monstrously tall */
       object-fit: contain; 
       border-radius: 12px; 
       box-shadow: 0 8px 20px rgba(0,0,0,0.15); 
@@ -279,36 +292,38 @@
       header h1 { font-size: 24px; }
       nav ul { gap: 10px; }
     }
+    html { user-select: none !important; -webkit-tap-highlight-color: transparent; }
   </style>
 </head>
 <body onload="pageLoaded()">
 
 <canvas id="holiCanvas"></canvas>
 
-<header>
-  
-  <div class="header-graphics">
-    <div class="blood-drop-container">
-      <img class="logo-inside" src="E4A_logo.png" alt="E4A Logo" onerror="this.src='https://via.placeholder.com/120x120?text=E4A+Logo'">
+<div class="hero-section">
+  <header>
+    <div class="header-graphics">
+      <div class="blood-drop-container">
+        <img class="logo-inside" src="E4A_logo.png" alt="E4A Logo" onerror="this.src='https://via.placeholder.com/120x120?text=E4A+Logo'">
+      </div>
     </div>
-  </div>
 
-  <h1>E4A  STUDY  CLASS</h1>
-  
-  <nav>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#students">Students</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-</header>
+    <h1>E4A  STUDY  CLASS</h1>
+    
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#students">Students</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="woman-day-image-container reveal">
+      <img id="womanDayImage" src="womans_day_banner.png" alt="Woman's Day Celebration" onerror="this.src='https://via.placeholder.com/1000x400/FF1493/FFFFFF?text=Upload+Womans+Day+Banner+Here'">
+  </div>
+</div>
 
 <main>
-
-<div class="woman-day-image-container reveal">
-    <img id="womanDayImage" src="womans_day_banner.png" alt="Woman's Day Celebration" onerror="this.src='https://via.placeholder.com/1000x400/FF1493/FFFFFF?text=Upload+Womans+Day+Banner+Here'">
-</div>
 
 <section id="about">
   <h2>About Us</h2>
@@ -476,7 +491,7 @@
     }
   }
 
-  // BURST TRIGGER (Music removed)
+  // BURST TRIGGER (Music removed completely)
   window.addEventListener('click', (e) => {
     createBurst(e.x, e.y);
   });
