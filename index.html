@@ -96,7 +96,6 @@
       width: 160px; 
       height: 220px; 
       
-      /* Transparent PNG Blood Drop */
       background-image: url('transparent_blood_drop.png'); 
       background-size: contain;
       background-repeat: no-repeat;
@@ -142,7 +141,6 @@
       color: #ffffff; 
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      /* Replaced Black (#000) with Dark Red (#8B0000) */
       text-shadow: 
         -1.5px -1.5px 0 #8B0000,  
          1.5px -1.5px 0 #8B0000,
@@ -156,21 +154,20 @@
        ========================================= */
     .woman-day-image-container {
       width: 100%;
-      max-width: 1000px;
-      margin: 30px auto 0; 
+      max-width: 900px;
+      margin: 20px auto 0; /* Reduced top margin to pull it up slightly */
       text-align: center;
-      padding: 0 20px;
+      padding: 0 15px;
     }
 
     .woman-day-image-container img {
       width: 100%;
       max-width: 100%;
       height: auto;
-      /* Keeps the tall banner neatly constrained to 60% of the screen height */
-      max-height: 60vh; 
+      max-height: 40vh; /* Reduced to 40% of viewport height to stop it from shifting content down too much */
       object-fit: contain; 
-      border-radius: 15px; 
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15); 
+      border-radius: 12px; 
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15); 
       display: inline-block;
     }
 
@@ -288,10 +285,6 @@
 
 <canvas id="holiCanvas"></canvas>
 
-<audio id="holiAudio" loop>
-  <source src="holi-music.mp3" type="audio/mpeg">
-</audio>
-
 <header>
   
   <div class="header-graphics">
@@ -314,7 +307,7 @@
 <main>
 
 <div class="woman-day-image-container reveal">
-    <img id="womanDayImage" src="womans_day_banner.png" alt="Woman's Day Celebration" onerror="this.src='https://via.placeholder.com/1000x500/FF1493/FFFFFF?text=Upload+Womans+Day+Banner+Here'">
+    <img id="womanDayImage" src="womans_day_banner.png" alt="Woman's Day Celebration" onerror="this.src='https://via.placeholder.com/1000x400/FF1493/FFFFFF?text=Upload+Womans+Day+Banner+Here'">
 </div>
 
 <section id="about">
@@ -426,23 +419,7 @@
   revealOnScroll(); 
 
   // ==========================================
-  // BACKGROUND MUSIC PLAY LOGIC
-  // ==========================================
-  const bgMusic = document.getElementById('holiAudio');
-  let musicStarted = false;
-
-  function startMusic() {
-    if (!musicStarted && bgMusic.paused) {
-      bgMusic.play().then(() => {
-        musicStarted = true;
-      }).catch(err => {
-        console.log("Audio autoplay was prevented by browser: ", err);
-      });
-    }
-  }
-
-  // ==========================================
-  // FESTIVE COLOR SPLASH ANIMATION
+  // FESTIVE COLOR SPLASH ANIMATION (Silent)
   // ==========================================
   const canvas = document.getElementById('holiCanvas');
   const ctx = canvas.getContext('2d');
@@ -499,15 +476,13 @@
     }
   }
 
-  // BURST & MUSIC TRIGGER
+  // BURST TRIGGER (Music removed)
   window.addEventListener('click', (e) => {
     createBurst(e.x, e.y);
-    startMusic(); 
   });
   
   window.addEventListener('touchstart', (e) => {
     createBurst(e.touches[0].clientX, e.touches[0].clientY);
-    startMusic(); 
   });
 
   function animate() {
