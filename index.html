@@ -53,7 +53,7 @@
        HERO SECTION: 100% VIEWPORT HEIGHT
        ========================================= */
     .hero-section {
-      min-height: 100vh; /* Forces the header + banner to take exactly 1 screen height */
+      min-height: 100vh; 
       display: flex;
       flex-direction: column;
     }
@@ -99,26 +99,20 @@
       position: relative;
     }
     
-    /* The Transparent Image Blood Drop Container */
     .blood-drop-container {
       position: relative;
       width: 160px; 
       height: 220px; 
-      
       background-image: url('transparent_blood_drop.png'); 
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center bottom;
-      
       margin: -10px auto 25px; 
       z-index: 2;
       filter: drop-shadow(0 15px 15px rgba(229, 57, 53, 0.3)); 
-      
-      /* BOUNCE EFFECT */
       animation: realisticBounce 4s infinite ease-in-out; 
     }
 
-    /* THE LOGO: Positioned exactly in the belly of the drop */
     .blood-drop-container img.logo-inside {
       position: absolute;
       top: 63%; 
@@ -134,7 +128,6 @@
       z-index: 3;
     }
 
-    /* BOUNCE KEYFRAMES */
     @keyframes realisticBounce {
       0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
       40% { transform: translateY(20px); }
@@ -159,14 +152,45 @@
     }
 
     /* =========================================
-       WOMAN'S DAY IMAGE CONTAINER (Fills space)
+       WOMAN'S DAY HINDI SLOGAN
+       ========================================= */
+    .womans-day-slogan {
+      text-align: center;
+      padding: 20px 15px 5px;
+      margin: 0 auto;
+      font-family: 'Noto Sans Devanagari', sans-serif;
+      animation: gentlePulse 3s infinite ease-in-out;
+    }
+
+    .womans-day-slogan .title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--magenta), #8B0000);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 5px;
+    }
+
+    .womans-day-slogan .subtitle {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #8B0000;
+    }
+
+    @keyframes gentlePulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+
+    /* =========================================
+       WOMAN'S DAY IMAGE CONTAINER
        ========================================= */
     .woman-day-image-container {
       width: 100%;
       max-width: 900px;
       margin: 0 auto; 
-      padding: 20px 15px;
-      /* This flex-grow stretches the container to push "About Us" perfectly off the screen */
+      padding: 15px;
       flex-grow: 1; 
       display: flex;
       justify-content: center;
@@ -177,14 +201,14 @@
       width: 100%;
       max-width: 100%;
       height: auto;
-      max-height: 45vh; /* Prevents banner from getting monstrously tall */
+      max-height: 42vh; 
       object-fit: contain; 
       border-radius: 12px; 
       box-shadow: 0 8px 20px rgba(0,0,0,0.15); 
       display: inline-block;
     }
 
-    /* HINDI TYPOGRAPHY */
+    /* HINDI TYPOGRAPHY (For About Us section) */
     .hindi { 
       font-family: 'Noto Sans Devanagari', sans-serif; 
       font-size: 1.15rem; 
@@ -291,6 +315,8 @@
       .blood-drop-container img.logo-inside { width: 85px; height: 85px; top: 63%; } 
       header h1 { font-size: 24px; }
       nav ul { gap: 10px; }
+      .womans-day-slogan .title { font-size: 1.3rem; }
+      .womans-day-slogan .subtitle { font-size: 0.95rem; }
     }
     html { user-select: none !important; -webkit-tap-highlight-color: transparent; }
   </style>
@@ -318,7 +344,12 @@
     </nav>
   </header>
 
-  <div class="woman-day-image-container reveal">
+  <div class="womans-day-slogan reveal active">
+    <div class="title">🌸 नारी शक्ति को शत-शत नमन! 🌸</div>
+    <div class="subtitle">वह जीवन देती है, उनके सम्मान में रक्तदान करें।</div>
+  </div>
+
+  <div class="woman-day-image-container reveal active">
       <img id="womanDayImage" src="womans_day_banner.png" alt="Woman's Day Celebration" onerror="this.src='https://via.placeholder.com/1000x400/FF1493/FFFFFF?text=Upload+Womans+Day+Banner+Here'">
   </div>
 </div>
@@ -434,7 +465,7 @@
   revealOnScroll(); 
 
   // ==========================================
-  // FESTIVE COLOR SPLASH ANIMATION (Silent)
+  // FESTIVE COLOR SPLASH ANIMATION (Silent Version)
   // ==========================================
   const canvas = document.getElementById('holiCanvas');
   const ctx = canvas.getContext('2d');
@@ -491,7 +522,7 @@
     }
   }
 
-  // BURST TRIGGER (Music removed completely)
+  // BURST TRIGGER ONLY (No Audio/Music logic here)
   window.addEventListener('click', (e) => {
     createBurst(e.x, e.y);
   });
@@ -507,6 +538,7 @@
   }
   animate();
 
+  // Initial burst animation on load
   setTimeout(() => {
     createBurst(window.innerWidth / 2, window.innerHeight / 3);
     setTimeout(() => createBurst(window.innerWidth / 3, window.innerHeight / 2), 300);
