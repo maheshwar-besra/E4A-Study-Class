@@ -101,13 +101,12 @@
     
     .water-drop-container {
       position: relative;
-      /* Significantly increased size to show the drop and splashes behind the logo */
       width: 260px; 
       height: 260px; 
       background-image: url('water_drop.png'); 
       background-size: contain;
       background-repeat: no-repeat;
-      background-position: center center; /* Centered perfectly for the splash image */
+      background-position: center center;
       margin: -20px auto 10px; 
       z-index: 2;
       filter: drop-shadow(0 10px 15px rgba(0, 85, 255, 0.2)); 
@@ -116,9 +115,10 @@
 
     .water-drop-container img.logo-inside {
       position: absolute;
-      top: 55%; /* Centered nicely within the belly of the new drop image */
+      /* PUSHED DOWN to 66% so it sits in the fat part of the drop! */
+      top: 66%; 
       left: 50%;
-      width: 95px; /* Kept logo size the same so the drop looks much bigger */
+      width: 95px; 
       height: 95px; 
       border-radius: 50%;
       transform: translate(-50%, -50%); 
@@ -166,14 +166,14 @@
     .water-day-slogan .title {
       font-size: 1.5rem;
       font-weight: 700;
-      color: #0055FF; /* Blue color for water theme */
+      color: #0055FF; 
       margin-bottom: 5px;
     }
 
     .water-day-slogan .subtitle {
       font-size: 1.05rem;
       font-weight: 600;
-      color: #00008B; /* Dark Blue */
+      color: #00008B; 
     }
 
     @keyframes gentlePulse {
@@ -309,8 +309,11 @@
     }
 
     @media(max-width: 600px) {
-      .water-drop-container { width: 200px; height: 200px; } /* Much larger on mobile too */
-      .water-drop-container img.logo-inside { width: 85px; height: 85px; top: 55%; } 
+      /* Made container larger on mobile so it doesn't squish */
+      .water-drop-container { width: 220px; height: 220px; } 
+      /* Ensures logo stays centered in the belly on mobile too */
+      .water-drop-container img.logo-inside { width: 85px; height: 85px; top: 66%; } 
+      
       header h1 { font-size: 24px; }
       nav ul { gap: 10px; }
       .water-day-slogan .title { font-size: 1.3rem; }
@@ -366,7 +369,7 @@
       <h3>🎯 <span class="hindi" style="font-weight:700;">हमारा लक्ष्य</span> (Goal)</h3>
       <p class="hindi">हमारा लक्ष्य सभी विद्यार्थियों को <strong>गुणवत्तापूर्ण और मूल्य-आधारित शिक्षा</strong> प्रदान करना है।
       हम बच्चों की <strong>मजबूत नींव, आत्मविश्वास, अनुशासन और जिज्ञासा </strong>विकसित करने पर ध्यान देते हैं, ताकि वे न केवल परीक्षाओं में अच्छा प्रदर्शन करें बल्कि एक जिम्मेदार और जागरूक नागरिक भी बनें।</p>
-      <p class="hindi"><strong>E4A Study Class</strong> में हम पूरी निष्ठा से <strong>“Education For All - सबके लिए शिक्षा”</strong> के सिद्धांत पर कार्य বাতাসে करते हैं।</p>
+      <p class="hindi"><strong>E4A Study Class</strong> में हम पूरी निष्ठा से <strong>“Education For All - सबके लिए शिक्षा”</strong> के सिद्धांत पर कार्य करते हैं।</p>
     </div>
   </div>
 </section>
