@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#FF1493">
-  <title>E4A Study Class - Woman's Day</title>
+  <meta name="theme-color" content="#0055FF">
+  <title>E4A Study Class - World Water Day</title>
 
   <link rel="manifest" href="manifest.json">
 
@@ -66,9 +66,9 @@
     header {
       background-color: #ffffff;
       background-image: 
-        radial-gradient(circle at 0% 0%, rgba(255, 20, 147, 0.2) 0%, transparent 60%),
+        radial-gradient(circle at 0% 0%, rgba(0, 85, 255, 0.15) 0%, transparent 60%),
         radial-gradient(circle at 100% 100%, rgba(0, 255, 255, 0.2) 0%, transparent 60%),
-        radial-gradient(circle at 50% 0%, rgba(255, 215, 0, 0.2) 0%, transparent 60%);
+        radial-gradient(circle at 50% 0%, rgba(255, 215, 0, 0.15) 0%, transparent 60%);
       background-size: cover;
       text-align: center;
       padding: 35px 20px 25px 20px;
@@ -82,13 +82,13 @@
       display: block;
       width: 100%;
       height: 6px;
-      background: linear-gradient(90deg, var(--magenta), var(--gold), var(--lime), var(--cyan), var(--primary));
+      background: linear-gradient(90deg, var(--cyan), var(--gold), var(--lime), #0055FF, var(--primary));
       margin-top: 25px;
       border-radius: 3px;
     }
 
     /* =========================================
-       LOGO INSIDE TRANSPARENT BLOOD DROP
+       LOGO INSIDE TRANSPARENT WATER DROP
        ========================================= */
     .header-graphics {
       display: flex;
@@ -99,21 +99,22 @@
       position: relative;
     }
     
-    .blood-drop-container {
+    .water-drop-container {
       position: relative;
       width: 160px; 
       height: 220px; 
-      background-image: url('transparent_blood_drop.png'); 
+      /* Make sure to name your uploaded water drop image exactly this! */
+      background-image: url('water_drop.png'); 
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center bottom;
       margin: -10px auto 25px; 
       z-index: 2;
-      filter: drop-shadow(0 15px 15px rgba(229, 57, 53, 0.3)); 
+      filter: drop-shadow(0 15px 15px rgba(0, 85, 255, 0.3)); /* Blue drop shadow */
       animation: realisticBounce 4s infinite ease-in-out; 
     }
 
-    .blood-drop-container img.logo-inside {
+    .water-drop-container img.logo-inside {
       position: absolute;
       top: 63%; 
       left: 50%;
@@ -135,7 +136,7 @@
     }
 
     /* =========================================
-       DARK RED TEXT OUTLINE FOR HEADER
+       DARK BLUE TEXT OUTLINE FOR HEADER
        ========================================= */
     header h1 { 
       font-size: 28px; 
@@ -143,18 +144,19 @@
       color: #ffffff; 
       letter-spacing: 1.5px;
       text-transform: uppercase;
+      /* Replaced Dark Red with Dark Blue (#00008B) */
       text-shadow: 
-        -1.5px -1.5px 0 #8B0000,  
-         1.5px -1.5px 0 #8B0000,
-        -1.5px  1.5px 0 #8B0000,
-         1.5px  1.5px 0 #8B0000,
-         4px 4px 6px rgba(139, 0, 0, 0.5); 
+        -1.5px -1.5px 0 #00008B,  
+         1.5px -1.5px 0 #00008B,
+        -1.5px  1.5px 0 #00008B,
+         1.5px  1.5px 0 #00008B,
+         4px 4px 6px rgba(0, 0, 139, 0.5); 
     }
 
     /* =========================================
-       WOMAN'S DAY HINDI SLOGAN
+       WORLD WATER DAY HINDI SLOGAN
        ========================================= */
-    .womans-day-slogan {
+    .water-day-slogan {
       text-align: center;
       padding: 20px 15px 5px;
       margin: 0 auto;
@@ -162,17 +164,17 @@
       animation: gentlePulse 3s infinite ease-in-out;
     }
 
-    .womans-day-slogan .title {
+    .water-day-slogan .title {
       font-size: 1.5rem;
       font-weight: 700;
-      color: var(--magenta); /* Changed to solid pink as requested */
+      color: #0055FF; /* Blue color for water theme */
       margin-bottom: 5px;
     }
 
-    .womans-day-slogan .subtitle {
+    .water-day-slogan .subtitle {
       font-size: 1.05rem;
       font-weight: 600;
-      color: #8B0000;
+      color: #00008B; /* Dark Blue */
     }
 
     @keyframes gentlePulse {
@@ -181,9 +183,9 @@
     }
 
     /* =========================================
-       WOMAN'S DAY IMAGE CONTAINER
+       WATER DAY POSTER CONTAINER
        ========================================= */
-    .woman-day-image-container {
+    .water-day-image-container {
       width: 100%;
       max-width: 900px;
       margin: 0 auto; 
@@ -194,7 +196,7 @@
       align-items: center;
     }
 
-    .woman-day-image-container img {
+    .water-day-image-container img {
       width: 100%;
       max-width: 100%;
       height: auto;
@@ -205,7 +207,7 @@
       display: inline-block;
     }
 
-    /* HINDI TYPOGRAPHY */
+    /* HINDI TYPOGRAPHY (For About Us section) */
     .hindi { 
       font-family: 'Noto Sans Devanagari', sans-serif; 
       font-size: 1.15rem; 
@@ -216,7 +218,7 @@
     }
     .hindi strong { font-weight: 700; color: #000; font-size: 1.18rem; }
     
-    h3 { margin-bottom: 20px; color: var(--magenta); }
+    h3 { margin-bottom: 20px; color: var(--primary); }
     p { font-size: 1rem; line-height: 1.5; margin-bottom: 10px; }
 
     /* =========================================
@@ -308,12 +310,12 @@
     }
 
     @media(max-width: 600px) {
-      .blood-drop-container { width: 140px; height: 190px; } 
-      .blood-drop-container img.logo-inside { width: 85px; height: 85px; top: 63%; } 
+      .water-drop-container { width: 140px; height: 190px; } 
+      .water-drop-container img.logo-inside { width: 85px; height: 85px; top: 63%; } 
       header h1 { font-size: 24px; }
       nav ul { gap: 10px; }
-      .womans-day-slogan .title { font-size: 1.3rem; }
-      .womans-day-slogan .subtitle { font-size: 0.95rem; }
+      .water-day-slogan .title { font-size: 1.3rem; }
+      .water-day-slogan .subtitle { font-size: 0.95rem; }
     }
     html { user-select: none !important; -webkit-tap-highlight-color: transparent; }
   </style>
@@ -325,7 +327,7 @@
 <div class="hero-section">
   <header>
     <div class="header-graphics">
-      <div class="blood-drop-container">
+      <div class="water-drop-container">
         <img class="logo-inside" src="E4A_logo.png" alt="E4A Logo" onerror="this.src='https://via.placeholder.com/120x120?text=E4A+Logo'">
       </div>
     </div>
@@ -341,13 +343,13 @@
     </nav>
   </header>
 
-  <div class="womans-day-slogan reveal active">
-    <div class="title">🌸 नारी शक्ति को शत-शत नमन! 🌸</div>
-    <div class="subtitle">वह जीवन देती है, उनके सम्मान में रक्तदान करें।</div>
+  <div class="water-day-slogan reveal active">
+    <div class="title">💧 जल ही जीवन है! 💧</div>
+    <div class="subtitle">हर एक बूंद कीमती है, कृपया पानी बचाएं।</div>
   </div>
 
-  <div class="woman-day-image-container reveal active">
-      <img id="womanDayImage" src="womans_day_banner.png" alt="Woman's Day Celebration" onerror="this.src='https://via.placeholder.com/1000x400/FF1493/FFFFFF?text=Upload+Womans+Day+Banner+Here'">
+  <div class="water-day-image-container reveal active">
+      <img id="waterDayImage" src="save_water_poster.png" alt="World Water Day Celebration" onerror="this.src='https://via.placeholder.com/1000x400/0055FF/FFFFFF?text=Upload+Save+Water+Poster+Here'">
   </div>
 </div>
 
@@ -462,7 +464,7 @@
   revealOnScroll(); 
 
   // ==========================================
-  // FALLING FLOWER SHOWER ANIMATION
+  // FALLING WATER DROPS SHOWER ANIMATION
   // ==========================================
   const canvas = document.getElementById('holiCanvas');
   const ctx = canvas.getContext('2d');
@@ -475,8 +477,9 @@
   });
 
   const flowers = [];
-  const flowerEmojis = ['🌸', '🌺', '🌼', '💮', '🌷'];
-  const maxFlowers = 35; // Number of flowers on screen
+  // Swapped the emojis to perfectly fit the Water Day theme!
+  const flowerEmojis = ['💧', '💦', '🌊', '🌧️', '🫧'];
+  const maxFlowers = 35; // Number of items on screen
 
   class Flower {
     constructor(isInitialLoad = false) {
@@ -489,13 +492,13 @@
     
     reset() {
       this.x = Math.random() * canvas.width;
-      this.y = -50; // Start slightly above the screen
-      this.size = Math.random() * 15 + 15; // Random size between 15 and 30
-      this.speedY = Math.random() * 2 + 1; // Falling speed
-      this.speedX = Math.random() * 1 - 0.5; // Slight drift left/right
+      this.y = -50; 
+      this.size = Math.random() * 15 + 15; 
+      this.speedY = Math.random() * 2 + 1; 
+      this.speedX = Math.random() * 1 - 0.5; 
       this.emoji = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
       this.rotation = Math.random() * 360;
-      this.rotationSpeed = (Math.random() - 0.5) * 2; // Spinning speed
+      this.rotationSpeed = (Math.random() - 0.5) * 2; 
     }
 
     update() {
@@ -503,7 +506,6 @@
       this.x += this.speedX;
       this.rotation += this.rotationSpeed;
 
-      // When it falls off the bottom, bring it back to the top
       if (this.y > canvas.height + 50) {
         this.reset();
       }
@@ -521,12 +523,11 @@
     }
   }
 
-  // Populate initial falling flowers
+  // Populate initial falling items
   for (let i = 0; i < maxFlowers; i++) {
     flowers.push(new Flower(true));
   }
 
-  // Draw the animation frame by frame
   function animateFlowers() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     flowers.forEach(flower => {
@@ -537,18 +538,16 @@
   }
   animateFlowers();
 
-  // Add extra jumping flowers when the user taps/clicks the screen!
+  // Add extra jumping drops when the user taps/clicks the screen!
   function createTapFlowers(x, y) {
     for(let i=0; i<5; i++){
         let f = new Flower();
         f.x = x;
         f.y = y;
-        // Make them "jump" up slightly before falling
         f.speedY = Math.random() * -3 - 2; 
         f.speedX = Math.random() * 4 - 2;
         flowers.push(f);
     }
-    // Prevent too many flowers from causing lag
     if(flowers.length > 70) {
         flowers.splice(0, flowers.length - 70);
     }
