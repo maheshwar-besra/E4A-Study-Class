@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#8A2BE2">
+  <meta name="theme-color" content="#6c2bd9">
   <title>E4A Study Class - Happy Teacher's Day</title>
 
   <link rel="manifest" href="manifest.json">
@@ -21,7 +21,7 @@
        CSS VARIABLES - Teacher's Day Palette
        ========================================= */
     :root {
-      --primary: #6c2bd9;       /* Royal Purple */
+      --primary: #6c2bd9;       /* Royal Inspiring Purple */
       --primary-dark: #4c1d95;  /* Deep Purple */
       --gold: #f59e0b;          /* Teacher's Day Gold */
       --gold-light: #fef3c7;
@@ -80,17 +80,25 @@
     }
 
     /* =========================================
-       HERO SECTION
+       HERO SECTION - 100% DYNAMIC VIEWPORT HEIGHT
+       Guarantees "About Us" starts strictly below the fold!
        ========================================= */
     .hero-section {
       position: relative;
+      width: 100%;
+      min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       flex-direction: column;
-      background: linear-gradient(180deg, #ffffff 0%, rgba(245, 243, 255, 0.7) 100%);
-      border-bottom: 2px solid rgba(108, 43, 217, 0.1);
+      justify-content: space-between;
+      background: linear-gradient(180deg, #ffffff 0%, rgba(245, 243, 255, 0.95) 100%);
+      border-bottom: 2px solid rgba(108, 43, 217, 0.08);
+      overflow: hidden;
     }
 
-    main { flex: 1 0 auto; }
+    main { 
+      flex: 1 0 auto; 
+    }
 
     /* =========================================
        HEADER
@@ -102,9 +110,9 @@
         radial-gradient(circle at 90% 20%, rgba(245, 158, 11, 0.12) 0%, transparent 45%),
         radial-gradient(circle at 50% 90%, rgba(225, 29, 72, 0.08) 0%, transparent 40%);
       text-align: center;
-      padding: 28px 16px 20px;
+      padding: 20px 16px 14px;
       position: relative;
-      box-shadow: 0 4px 20px rgba(76, 29, 149, 0.06);
+      box-shadow: 0 4px 18px rgba(76, 29, 149, 0.05);
       flex-shrink: 0;
     }
 
@@ -112,35 +120,35 @@
       content: "";
       display: block;
       width: 100%;
-      height: 5px;
+      height: 4px;
       background: linear-gradient(90deg, var(--crimson), var(--gold), var(--primary), var(--cyan), var(--lime));
-      margin-top: 22px;
+      margin-top: 14px;
       border-radius: 999px;
     }
 
     /* =========================================
-       CLEAN CIRCULAR LOGO CONTAINER
+       CLEAN CIRCULAR LOGO (NO TEXT RIBBON)
        ========================================= */
     .header-graphics {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 16px; 
+      margin-bottom: 10px; 
       width: 100%;
     }
     
     .logo-container {
       position: relative;
-      width: 120px; 
-      height: 120px; 
+      width: 105px; 
+      height: 105px; 
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto;
       border-radius: 50%;
       background: linear-gradient(135deg, #ffd700 0%, #ff8c00 50%, #8a2be2 100%);
-      padding: 4px;
-      box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3), 0 0 15px rgba(108, 43, 217, 0.15);
+      padding: 3.5px;
+      box-shadow: 0 8px 20px rgba(245, 158, 11, 0.28), 0 0 12px rgba(108, 43, 217, 0.12);
       animation: floatBadge 4s infinite ease-in-out; 
     }
 
@@ -153,7 +161,7 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      border: 3px solid #ffffff;
+      border: 2px solid #ffffff;
     }
 
     .logo-container img.logo-inside {
@@ -165,46 +173,46 @@
 
     @keyframes floatBadge {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-7px); }
+      50% { transform: translateY(-5px); }
     }
 
     /* =========================================
        HEADER TITLE & NAVIGATION
        ========================================= */
     header h1 { 
-      font-size: 26px; 
+      font-size: 24px; 
       font-weight: 800; 
       color: #ffffff; 
-      letter-spacing: 2px;
+      letter-spacing: 1.8px;
       text-transform: uppercase;
-      margin-top: 6px;
+      margin-top: 4px;
       text-shadow: 
         -1.5px -1.5px 0 var(--primary-dark),  
          1.5px -1.5px 0 var(--primary-dark),
         -1.5px  1.5px 0 var(--primary-dark),
          1.5px  1.5px 0 var(--primary-dark),
-         0 5px 12px rgba(76, 29, 149, 0.45); 
+         0 4px 10px rgba(76, 29, 149, 0.4); 
     }
 
     nav ul { 
       list-style: none; 
       display: flex; 
       justify-content: center; 
-      gap: 14px; 
+      gap: 12px; 
       flex-wrap: wrap; 
-      margin-top: 16px; 
+      margin-top: 12px; 
     }
     
     nav ul li a { 
       text-decoration: none; 
       font-weight: 600; 
       transition: all 0.25s ease; 
-      padding: 7px 22px; 
+      padding: 5px 18px; 
       border-radius: 999px; 
       background: #ffffff; 
-      font-size: 14px;
+      font-size: 13.5px;
       display: inline-block;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
     }
 
     nav ul li:nth-child(1) a { border: 2px solid var(--crimson); color: var(--crimson); }
@@ -221,63 +229,66 @@
        ========================================= */
     .teachers-day-banner {
       text-align: center;
-      padding: 24px 16px 12px;
-      max-width: 960px;
+      padding: 12px 16px 6px;
+      max-width: 920px;
       margin: 0 auto;
       font-family: 'Noto Sans Devanagari', sans-serif;
+      flex-shrink: 0;
     }
 
     .teachers-day-banner .shloka-badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       background: var(--gold-light);
       color: #92400e;
       border: 1px solid #fcd34d;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 700;
-      padding: 4px 14px;
+      padding: 3px 12px;
       border-radius: 999px;
-      margin-bottom: 12px;
+      margin-bottom: 6px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
 
     .teachers-day-banner .title {
-      font-size: 1.55rem;
+      font-size: 1.38rem;
       font-weight: 800;
       color: var(--primary-dark); 
-      margin-bottom: 6px;
-      line-height: 1.4;
+      margin-bottom: 4px;
+      line-height: 1.35;
       background: linear-gradient(135deg, var(--primary-dark) 20%, var(--crimson) 80%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .teachers-day-banner .shloka-quote {
-      font-size: 1.05rem;
+      font-size: 0.98rem;
       font-weight: 600;
       color: #7c2d12;
-      line-height: 1.6;
-      max-width: 750px;
-      margin: 6px auto 0;
+      line-height: 1.5;
+      max-width: 720px;
+      margin: 4px auto 0;
     }
 
     .teachers-day-banner .subtext {
-      font-size: 0.95rem;
+      font-size: 0.86rem;
       color: #4b5563;
-      margin-top: 4px;
+      margin-top: 3px;
       font-family: 'Poppins', sans-serif;
     }
 
     /* =========================================
-       HERO IMAGE CONTAINER (RESPONSIVE & MOBILE-FIT)
+       HERO IMAGE CONTAINER (RESPONSIVE AUTO-FIT)
        ========================================= */
     .hero-image-wrapper {
       width: 100%;
-      max-width: 1020px;
-      margin: 10px auto 26px; 
-      padding: 0 16px;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 6px 16px 16px;
+      flex: 1 1 auto;
+      min-height: 0;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -285,21 +296,25 @@
 
     .image-card {
       width: 100%;
+      max-height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       position: relative;
-      border-radius: 20px;
+      border-radius: 18px;
       background: #ffffff;
-      padding: 8px;
+      padding: 6px;
       box-shadow: 
-        0 10px 25px -5px rgba(108, 43, 217, 0.15),
-        0 8px 10px -6px rgba(0, 0, 0, 0.08),
-        0 0 0 1px rgba(245, 158, 11, 0.25);
+        0 8px 24px -4px rgba(108, 43, 217, 0.14),
+        0 4px 8px -4px rgba(0, 0, 0, 0.05),
+        0 0 0 1px rgba(245, 158, 11, 0.22);
       overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .image-card:hover {
       box-shadow: 
-        0 20px 35px -10px rgba(108, 43, 217, 0.25),
+        0 16px 30px -8px rgba(108, 43, 217, 0.22),
         0 0 0 2px var(--gold);
     }
 
@@ -307,61 +322,104 @@
       width: 100%;
       height: auto;
       display: block;
-      border-radius: 14px;
-      object-fit: cover;
-      max-height: 68vh; 
+      border-radius: 12px;
+      object-fit: contain;
+      /* Dynamic viewport height ceiling to fit all screens comfortably */
+      max-height: min(44vh, 44dvh, 420px); 
       background: #fdf2f8;
     }
 
-    /* Responsive Mobile Tweaks for Hero Image */
-    @media (max-width: 768px) {
-      .hero-image-wrapper {
-        padding: 0 12px;
-        margin: 6px auto 20px;
-      }
-      .image-card {
-        padding: 5px;
-        border-radius: 16px;
-      }
-      .image-card img {
-        border-radius: 12px;
-        max-height: 52vh;
-        object-fit: contain;
-      }
-      .teachers-day-banner .title {
-        font-size: 1.3rem;
-      }
-      .teachers-day-banner .shloka-quote {
-        font-size: 0.95rem;
-      }
-      header h1 {
-        font-size: 21px;
+    /* =========================================
+       ADAPTIVE VIEWPORT HEIGHT BREAKPOINTS
+       (Ensures zero overlap and perfect mobile fit)
+       ========================================= */
+    @media (max-height: 780px) {
+      header {
+        padding: 14px 12px 10px;
       }
       .logo-container {
-        width: 105px;
-        height: 105px;
+        width: 88px;
+        height: 88px;
+        margin-bottom: 4px;
       }
-    }
-
-    @media (max-width: 480px) {
-      .image-card img {
-        max-height: 44vh;
+      header h1 {
+        font-size: 20px;
+        letter-spacing: 1px;
+      }
+      nav ul {
+        margin-top: 8px;
+        gap: 8px;
+      }
+      nav ul li a {
+        padding: 4px 15px;
+        font-size: 12.5px;
+      }
+      .teachers-day-banner {
+        padding: 8px 12px 4px;
+      }
+      .teachers-day-banner .shloka-badge {
+        font-size: 0.74rem;
+        padding: 2px 10px;
+        margin-bottom: 4px;
       }
       .teachers-day-banner .title {
-        font-size: 1.18rem;
+        font-size: 1.22rem;
       }
       .teachers-day-banner .shloka-quote {
         font-size: 0.88rem;
-        line-height: 1.5;
+        line-height: 1.4;
       }
       .teachers-day-banner .subtext {
+        font-size: 0.78rem;
+        margin-top: 2px;
+      }
+      .hero-image-wrapper {
+        padding: 4px 12px 12px;
+      }
+      .image-card {
+        padding: 5px;
+        border-radius: 14px;
+      }
+      .image-card img {
+        max-height: min(41dvh, 340px);
+      }
+    }
+
+    @media (max-height: 660px) {
+      header {
+        padding: 10px 8px 6px;
+      }
+      .logo-container {
+        width: 72px;
+        height: 72px;
+      }
+      header h1 {
+        font-size: 18px;
+      }
+      .teachers-day-banner .title {
+        font-size: 1.1rem;
+      }
+      .teachers-day-banner .shloka-quote {
         font-size: 0.82rem;
+      }
+      .teachers-day-banner .subtext {
+        display: none; /* Hide subtext on very short viewports */
+      }
+      .image-card img {
+        max-height: min(38dvh, 260px);
+      }
+    }
+
+    /* Screen width adjustments */
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 21px;
       }
       nav ul {
         gap: 8px;
       }
       nav ul li a {
-        padding: 5px 16px;
+        padding: 5px 15px;
         font-size: 13px;
       }
     }
@@ -370,9 +428,13 @@
        SECTION STYLES & HINDI TYPOGRAPHY
        ========================================= */
     section { 
-      padding: 45px 18px 55px; 
+      padding: 55px 18px 55px; 
       max-width: 1200px; 
       margin: auto; 
+    }
+
+    #about {
+      padding-top: 65px; /* Clean breathing room when scrolled into view */
     }
 
     h2 { 
@@ -590,10 +652,10 @@
 </head>
 <body onload="pageLoaded()">
 
-<!-- Floating Flower and Sparkle Particles for Teacher's Day -->
+<!-- Floating Flower, Star & Sparkle Particles -->
 <canvas id="celebrationCanvas"></canvas>
 
-<!-- HERO SECTION -->
+<!-- HERO SECTION: Precisely 100% of the mobile viewport height -->
 <div class="hero-section">
   <header>
     <div class="header-graphics">
@@ -630,7 +692,7 @@
     </div>
   </div>
 
-  <!-- HERO IMAGE CONTAINER (Fits all screen sizes & mobile) -->
+  <!-- HERO IMAGE (Fits the exact remaining mobile screen height) -->
   <div class="hero-image-wrapper reveal active">
     <div class="image-card">
       <img id="teacherDayImage" src="tday.png" alt="Happy Teachers' Day Celebration" onerror="this.src='https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80'">
@@ -638,7 +700,7 @@
   </div>
 </div>
 
-<!-- MAIN CONTENT -->
+<!-- MAIN CONTENT (Starts strictly below the first viewport) -->
 <main>
 
 <!-- ABOUT US SECTION -->
@@ -717,7 +779,7 @@
     { name: "Kamal Soy", class: "Class 2", img: "Students/ks.png", color: "var(--lime)" },
     { name: "Kunal Horo", class: "Class 1", img: "Students/kh.png", color: "var(--cyan)" },
     { name: "Krishna Hansda", class: "Class UKG", img: "Students/krh.png", color: "var(--primary)" },
-    { name: "Kajal Kumari", class: "Class LKG", img: "Students/orange" ? "var(--orange)" : "#ea580c", color: "var(--orange)" },
+    { name: "Kajal Kumari", class: "Class LKG", img: "Students/kk.png" , color: "var(--orange)" },
     { name: "Naina Kumari", class: "Class Nursery", img: "Students/nk.png", color: "var(--crimson)" }
   ];
 
