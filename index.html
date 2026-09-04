@@ -3,31 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0055FF">
-  <title>E4A Study Class - World Water Day</title>
+  <meta name="theme-color" content="#8A2BE2">
+  <title>E4A Study Class - Happy Teacher's Day</title>
 
   <link rel="manifest" href="manifest.json">
 
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
+  <!-- Boxicons -->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   
   <style>
-    /* CSS VARIABLES - Common palette */
+    /* =========================================
+       CSS VARIABLES - Teacher's Day Palette
+       ========================================= */
     :root {
-      --primary: #8A2BE2; /* Vibrant Purple */
-      --magenta: #FF1493; /* Deep Pink */
-      --gold: #FFD700;    /* Bright Yellow */
-      --cyan: #00FFFF;    /* Bright Blue */
-      --lime: #32CD32;    /* Bright Green */
-      --orange: #FF4500;  /* Bright Orange */
-      --bg: #FFF0F5;      /* Lavender Blush background */
-      --text: #333;
+      --primary: #6c2bd9;       /* Royal Purple */
+      --primary-dark: #4c1d95;  /* Deep Purple */
+      --gold: #f59e0b;          /* Teacher's Day Gold */
+      --gold-light: #fef3c7;
+      --crimson: #e11d48;       /* Festive Rose / Crimson */
+      --cyan: #0284c7;          /* Sky Blue */
+      --lime: #16a34a;          /* Growth Green */
+      --orange: #ea580c;        /* Saffron / Energy Orange */
+      --bg: #faf5ff;            /* Warm Lavender-Rose background */
+      --card-bg: #ffffff;
+      --text: #1f2937;
+      --text-muted: #4b5563;
     }
 
-    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
-    html, body { height:100%; }
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+      font-family: 'Poppins', sans-serif; 
+    }
+    
+    html, body { 
+      min-height: 100%; 
+      scroll-behavior: smooth;
+    }
     
     body {
       background: var(--bg);
@@ -35,7 +53,7 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      will-change: opacity; 
+      overflow-x: hidden;
     }
 
     input, textarea, html, a, button, div {
@@ -46,259 +64,12 @@
     a:focus, a:active, a:visited, a:hover {
       text-decoration: none;
       color: inherit;
-      background: none !important;
     }
 
     /* =========================================
-       HERO SECTION: 100% VIEWPORT HEIGHT
+       CELEBRATORY CANVAS LAYER (FLOWERS & STARS)
        ========================================= */
-    .hero-section {
-      min-height: 100vh; 
-      display: flex;
-      flex-direction: column;
-    }
-
-    main { flex: 1 0 auto; }
-
-    /* =========================================
-       HEADER: Clean background
-       ========================================= */
-    header {
-      background-color: #ffffff;
-      background-image: 
-        radial-gradient(circle at 0% 0%, rgba(0, 85, 255, 0.15) 0%, transparent 60%),
-        radial-gradient(circle at 100% 100%, rgba(0, 255, 255, 0.2) 0%, transparent 60%),
-        radial-gradient(circle at 50% 0%, rgba(255, 215, 0, 0.15) 0%, transparent 60%);
-      background-size: cover;
-      text-align: center;
-      padding: 35px 20px 25px 20px;
-      position: relative;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-      flex-shrink: 0;
-    }
-
-    header::after {
-      content: "";
-      display: block;
-      width: 100%;
-      height: 6px;
-      background: linear-gradient(90deg, var(--cyan), var(--gold), var(--lime), #0055FF, var(--primary));
-      margin-top: 25px;
-      border-radius: 3px;
-    }
-
-    /* =========================================
-       LOGO INSIDE TRANSPARENT WATER DROP
-       ========================================= */
-    .header-graphics {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 25px; 
-      width: 100%;
-      position: relative;
-    }
-    
-    .water-drop-container {
-      position: relative;
-      width: 260px; 
-      height: 260px; 
-      background-image: url('water_drop.png'); 
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center center;
-      margin: -20px auto 10px; 
-      z-index: 2;
-      filter: drop-shadow(0 10px 15px rgba(0, 85, 255, 0.2)); 
-      animation: realisticBounce 4s infinite ease-in-out; 
-    }
-
-    .water-drop-container img.logo-inside {
-      position: absolute;
-      /* PUSHED DOWN to 66% so it sits in the fat part of the drop! */
-      top: 66%; 
-      left: 50%;
-      width: 95px; 
-      height: 95px; 
-      border-radius: 50%;
-      transform: translate(-50%, -50%); 
-      background: white;
-      border: 3px solid white;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      object-fit: cover;
-      z-index: 3;
-    }
-
-    @keyframes realisticBounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-      40% { transform: translateY(15px); }
-      60% { transform: translateY(7px); }
-    }
-
-    /* =========================================
-       DARK BLUE TEXT OUTLINE FOR HEADER
-       ========================================= */
-    header h1 { 
-      font-size: 28px; 
-      font-weight: 700; 
-      color: #ffffff; 
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      text-shadow: 
-        -1.5px -1.5px 0 #00008B,  
-         1.5px -1.5px 0 #00008B,
-        -1.5px  1.5px 0 #00008B,
-         1.5px  1.5px 0 #00008B,
-         4px 4px 6px rgba(0, 0, 139, 0.5); 
-    }
-
-    /* =========================================
-       WORLD WATER DAY HINDI SLOGAN
-       ========================================= */
-    .water-day-slogan {
-      text-align: center;
-      padding: 20px 15px 5px;
-      margin: 0 auto;
-      font-family: 'Noto Sans Devanagari', sans-serif;
-      animation: gentlePulse 3s infinite ease-in-out;
-    }
-
-    .water-day-slogan .title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #0055FF; 
-      margin-bottom: 5px;
-    }
-
-    .water-day-slogan .subtitle {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: #00008B; 
-    }
-
-    @keyframes gentlePulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.03); }
-    }
-
-    /* =========================================
-       WATER DAY POSTER CONTAINER
-       ========================================= */
-    .water-day-image-container {
-      width: 100%;
-      max-width: 900px;
-      margin: 0 auto; 
-      padding: 15px;
-      flex-grow: 1; 
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .water-day-image-container img {
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-      max-height: 42vh; 
-      object-fit: contain; 
-      border-radius: 12px; 
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15); 
-      display: inline-block;
-    }
-
-    /* HINDI TYPOGRAPHY (For About Us section) */
-    .hindi { 
-      font-family: 'Noto Sans Devanagari', sans-serif; 
-      font-size: 1.15rem; 
-      font-weight: 500;   
-      line-height: 2.0;   
-      color: #444;        
-      text-align: justify; 
-    }
-    .hindi strong { font-weight: 700; color: #000; font-size: 1.18rem; }
-    
-    h3 { margin-bottom: 20px; color: var(--primary); }
-    p { font-size: 1rem; line-height: 1.5; margin-bottom: 10px; }
-
-    /* =========================================
-       PREMIUM OUTLINE BUTTONS
-       ========================================= */
-    nav ul { list-style: none; display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; margin-top: 15px; }
-    
-    nav ul li a { 
-      text-decoration: none; 
-      font-weight: 600; 
-      transition: all 0.3s ease; 
-      padding: 6px 22px; 
-      border-radius: 25px; 
-      background: transparent; 
-      font-size: 15px;
-    }
-
-    nav ul li:nth-child(1) a { border: 2px solid var(--magenta); color: var(--magenta); }
-    nav ul li:nth-child(1) a:hover { background: var(--magenta); color: #fff; }
-
-    nav ul li:nth-child(2) a { border: 2px solid var(--primary); color: var(--primary); }
-    nav ul li:nth-child(2) a:hover { background: var(--primary); color: #fff; }
-
-    nav ul li:nth-child(3) a { border: 2px solid var(--lime); color: var(--lime); }
-    nav ul li:nth-child(3) a:hover { background: var(--lime); color: #fff; }
-
-    section { padding: 30px 20px 50px; max-width: 1200px; margin: auto; }
-    h2 { 
-      text-align: center; 
-      color: var(--primary); 
-      margin-bottom: 40px; 
-      text-transform: uppercase; 
-      letter-spacing: 1px; 
-      border-bottom: 3px dashed var(--magenta); 
-      display: inline-block; 
-      padding-bottom: 5px; 
-      position: relative; 
-      left: 50%; 
-      transform: translateX(-50%); 
-    }
-
-    /* GRIDS & CARDS */
-    .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-    .box { background: #fff; padding: 30px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.08); text-align: center; border-top: 5px solid var(--lime); border-bottom: 5px solid var(--gold); }
-
-    /* STUDENTS GRID */
-    .student-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
-    .student-card { 
-      background: #fff; 
-      padding: 20px; 
-      border-radius: 15px; 
-      text-align: center; 
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08); 
-      cursor: pointer; 
-      transition: .3s; 
-      position: relative; 
-      overflow: hidden; 
-    }
-    
-    .student-card:hover { transform: translateY(-8px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
-    .student-card img { width: 100px; height: 100px; border-radius: 50%; margin-bottom: 10px; object-fit: cover; border: 4px solid var(--gold); }
-    .student-card h4 { color: var(--primary); font-size: 1.1rem; font-weight: 700; margin-top: 5px; }
-    .student-card p { font-size: 0.9rem; color: #7f8c8d; }
-
-    /* CONTACT SECTION */
-    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center; border-top: 5px solid var(--magenta); border-bottom: 5px solid var(--cyan); }
-    
-    .contact-item { padding: 15px; border-radius: 10px; }
-    .contact-item a { text-decoration: none; color: inherit; display: block; }
-    .contact-item i { font-size: 38px; color: var(--magenta); margin-bottom: 12px; display: block; transition: transform 0.2s; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
-    .contact-item:active i { transform: scale(0.8) rotate(15deg); color: var(--gold); }
-    .contact-item p { color: #000; font-weight: 600; font-size: 1rem; margin: 0; line-height: 1.4; }
-
-    footer { background: #2c3e50; color: #fff; text-align: center; padding: 20px 10px; font-size: 14px; margin-top: auto; border-top: 5px solid var(--gold); }
-    footer span { display: block; font-size: 13px; opacity: .8; margin-top: 5px; color: var(--gold); }
-
-    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
-    .reveal.active { opacity: 1; transform: none; }
-
-    /* CANVAS LAYER */
-    #holiCanvas {
+    #celebrationCanvas {
       position: fixed;
       top: 0;
       left: 0;
@@ -308,33 +79,532 @@
       z-index: 9999;
     }
 
-    @media(max-width: 600px) {
-      /* Made container larger on mobile so it doesn't squish */
-      .water-drop-container { width: 220px; height: 220px; } 
-      /* Ensures logo stays centered in the belly on mobile too */
-      .water-drop-container img.logo-inside { width: 85px; height: 85px; top: 66%; } 
-      
-      header h1 { font-size: 24px; }
-      nav ul { gap: 10px; }
-      .water-day-slogan .title { font-size: 1.3rem; }
-      .water-day-slogan .subtitle { font-size: 0.95rem; }
+    /* =========================================
+       HERO SECTION
+       ========================================= */
+    .hero-section {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(180deg, #ffffff 0%, rgba(245, 243, 255, 0.7) 100%);
+      border-bottom: 2px solid rgba(108, 43, 217, 0.1);
     }
-    html { user-select: none !important; -webkit-tap-highlight-color: transparent; }
+
+    main { flex: 1 0 auto; }
+
+    /* =========================================
+       HEADER
+       ========================================= */
+    header {
+      background: #ffffff;
+      background-image: 
+        radial-gradient(circle at 10% 10%, rgba(108, 43, 217, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 90% 20%, rgba(245, 158, 11, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 50% 90%, rgba(225, 29, 72, 0.08) 0%, transparent 40%);
+      text-align: center;
+      padding: 28px 16px 20px;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(76, 29, 149, 0.06);
+      flex-shrink: 0;
+    }
+
+    header::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--crimson), var(--gold), var(--primary), var(--cyan), var(--lime));
+      margin-top: 22px;
+      border-radius: 999px;
+    }
+
+    /* =========================================
+       CLEAN CIRCULAR LOGO CONTAINER
+       ========================================= */
+    .header-graphics {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 16px; 
+      width: 100%;
+    }
+    
+    .logo-container {
+      position: relative;
+      width: 120px; 
+      height: 120px; 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ffd700 0%, #ff8c00 50%, #8a2be2 100%);
+      padding: 4px;
+      box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3), 0 0 15px rgba(108, 43, 217, 0.15);
+      animation: floatBadge 4s infinite ease-in-out; 
+    }
+
+    .logo-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 3px solid #ffffff;
+    }
+
+    .logo-container img.logo-inside {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    @keyframes floatBadge {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-7px); }
+    }
+
+    /* =========================================
+       HEADER TITLE & NAVIGATION
+       ========================================= */
+    header h1 { 
+      font-size: 26px; 
+      font-weight: 800; 
+      color: #ffffff; 
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 6px;
+      text-shadow: 
+        -1.5px -1.5px 0 var(--primary-dark),  
+         1.5px -1.5px 0 var(--primary-dark),
+        -1.5px  1.5px 0 var(--primary-dark),
+         1.5px  1.5px 0 var(--primary-dark),
+         0 5px 12px rgba(76, 29, 149, 0.45); 
+    }
+
+    nav ul { 
+      list-style: none; 
+      display: flex; 
+      justify-content: center; 
+      gap: 14px; 
+      flex-wrap: wrap; 
+      margin-top: 16px; 
+    }
+    
+    nav ul li a { 
+      text-decoration: none; 
+      font-weight: 600; 
+      transition: all 0.25s ease; 
+      padding: 7px 22px; 
+      border-radius: 999px; 
+      background: #ffffff; 
+      font-size: 14px;
+      display: inline-block;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    nav ul li:nth-child(1) a { border: 2px solid var(--crimson); color: var(--crimson); }
+    nav ul li:nth-child(1) a:hover { background: var(--crimson); color: #fff; transform: translateY(-2px); }
+
+    nav ul li:nth-child(2) a { border: 2px solid var(--primary); color: var(--primary); }
+    nav ul li:nth-child(2) a:hover { background: var(--primary); color: #fff; transform: translateY(-2px); }
+
+    nav ul li:nth-child(3) a { border: 2px solid var(--lime); color: var(--lime); }
+    nav ul li:nth-child(3) a:hover { background: var(--lime); color: #fff; transform: translateY(-2px); }
+
+    /* =========================================
+       TEACHER'S DAY SHLOKA BANNER
+       ========================================= */
+    .teachers-day-banner {
+      text-align: center;
+      padding: 24px 16px 12px;
+      max-width: 960px;
+      margin: 0 auto;
+      font-family: 'Noto Sans Devanagari', sans-serif;
+    }
+
+    .teachers-day-banner .shloka-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--gold-light);
+      color: #92400e;
+      border: 1px solid #fcd34d;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .teachers-day-banner .title {
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: var(--primary-dark); 
+      margin-bottom: 6px;
+      line-height: 1.4;
+      background: linear-gradient(135deg, var(--primary-dark) 20%, var(--crimson) 80%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .teachers-day-banner .shloka-quote {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #7c2d12;
+      line-height: 1.6;
+      max-width: 750px;
+      margin: 6px auto 0;
+    }
+
+    .teachers-day-banner .subtext {
+      font-size: 0.95rem;
+      color: #4b5563;
+      margin-top: 4px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* =========================================
+       HERO IMAGE CONTAINER (RESPONSIVE & MOBILE-FIT)
+       ========================================= */
+    .hero-image-wrapper {
+      width: 100%;
+      max-width: 1020px;
+      margin: 10px auto 26px; 
+      padding: 0 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .image-card {
+      width: 100%;
+      position: relative;
+      border-radius: 20px;
+      background: #ffffff;
+      padding: 8px;
+      box-shadow: 
+        0 10px 25px -5px rgba(108, 43, 217, 0.15),
+        0 8px 10px -6px rgba(0, 0, 0, 0.08),
+        0 0 0 1px rgba(245, 158, 11, 0.25);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .image-card:hover {
+      box-shadow: 
+        0 20px 35px -10px rgba(108, 43, 217, 0.25),
+        0 0 0 2px var(--gold);
+    }
+
+    .image-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 14px;
+      object-fit: cover;
+      max-height: 68vh; 
+      background: #fdf2f8;
+    }
+
+    /* Responsive Mobile Tweaks for Hero Image */
+    @media (max-width: 768px) {
+      .hero-image-wrapper {
+        padding: 0 12px;
+        margin: 6px auto 20px;
+      }
+      .image-card {
+        padding: 5px;
+        border-radius: 16px;
+      }
+      .image-card img {
+        border-radius: 12px;
+        max-height: 52vh;
+        object-fit: contain;
+      }
+      .teachers-day-banner .title {
+        font-size: 1.3rem;
+      }
+      .teachers-day-banner .shloka-quote {
+        font-size: 0.95rem;
+      }
+      header h1 {
+        font-size: 21px;
+      }
+      .logo-container {
+        width: 105px;
+        height: 105px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .image-card img {
+        max-height: 44vh;
+      }
+      .teachers-day-banner .title {
+        font-size: 1.18rem;
+      }
+      .teachers-day-banner .shloka-quote {
+        font-size: 0.88rem;
+        line-height: 1.5;
+      }
+      .teachers-day-banner .subtext {
+        font-size: 0.82rem;
+      }
+      nav ul {
+        gap: 8px;
+      }
+      nav ul li a {
+        padding: 5px 16px;
+        font-size: 13px;
+      }
+    }
+
+    /* =========================================
+       SECTION STYLES & HINDI TYPOGRAPHY
+       ========================================= */
+    section { 
+      padding: 45px 18px 55px; 
+      max-width: 1200px; 
+      margin: auto; 
+    }
+
+    h2 { 
+      text-align: center; 
+      color: var(--primary); 
+      margin-bottom: 35px; 
+      font-size: 1.85rem;
+      text-transform: uppercase; 
+      letter-spacing: 1.5px; 
+      border-bottom: 3px dashed var(--crimson); 
+      display: inline-block; 
+      padding-bottom: 8px; 
+      position: relative; 
+      left: 50%; 
+      transform: translateX(-50%); 
+    }
+
+    .hindi { 
+      font-family: 'Noto Sans Devanagari', sans-serif; 
+      font-size: 1.12rem; 
+      font-weight: 500;   
+      line-height: 1.95;   
+      color: #374151;        
+      text-align: justify; 
+    }
+
+    .hindi strong { 
+      font-weight: 700; 
+      color: #111827; 
+      font-size: 1.14rem; 
+    }
+    
+    h3 { 
+      margin-bottom: 18px; 
+      color: var(--primary-dark); 
+      font-size: 1.3rem;
+    }
+
+    /* =========================================
+       GRIDS & CARDS
+       ========================================= */
+    .about-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); 
+      gap: 28px; 
+    }
+
+    .box { 
+      background: #fff; 
+      padding: 32px 26px; 
+      border-radius: 18px; 
+      box-shadow: 0 10px 25px rgba(0,0,0,0.06); 
+      text-align: left; 
+      border-top: 6px solid var(--lime); 
+      border-bottom: 6px solid var(--gold); 
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+
+    /* =========================================
+       STUDENTS GRID
+       ========================================= */
+    .student-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); 
+      gap: 20px; 
+    }
+
+    .student-card { 
+      background: #fff; 
+      padding: 22px 14px; 
+      border-radius: 18px; 
+      text-align: center; 
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06); 
+      cursor: pointer; 
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+      position: relative; 
+      overflow: hidden; 
+    }
+    
+    .student-card:hover { 
+      transform: translateY(-8px); 
+      box-shadow: 0 14px 28px rgba(108, 43, 217, 0.16); 
+    }
+
+    .student-card img { 
+      width: 94px; 
+      height: 94px; 
+      border-radius: 50%; 
+      margin-bottom: 12px; 
+      object-fit: cover; 
+      border: 4px solid var(--gold); 
+      background: #f3f4f6;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    .student-card h4 { 
+      color: var(--primary-dark); 
+      font-size: 1.05rem; 
+      font-weight: 700; 
+      margin-top: 4px; 
+    }
+
+    .student-card p { 
+      font-size: 0.88rem; 
+      color: #6b7280; 
+      margin-top: 2px;
+      font-weight: 500;
+    }
+
+    /* =========================================
+       CONTACT SECTION
+       ========================================= */
+    .contact-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); 
+      gap: 22px; 
+      text-align: center; 
+      border-top: 6px solid var(--crimson); 
+      border-bottom: 6px solid var(--cyan); 
+      background: #fff;
+      padding: 30px;
+      border-radius: 18px;
+    }
+    
+    .contact-item { 
+      padding: 16px 12px; 
+      border-radius: 12px; 
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .contact-item:hover {
+      background: rgba(108, 43, 217, 0.04);
+      transform: translateY(-3px);
+    }
+
+    .contact-item a { 
+      text-decoration: none; 
+      color: inherit; 
+      display: block; 
+    }
+
+    .contact-item i { 
+      font-size: 40px; 
+      color: var(--crimson); 
+      margin-bottom: 10px; 
+      display: block; 
+      transition: transform 0.25s ease, color 0.25s ease; 
+      text-shadow: 0 4px 8px rgba(225, 29, 72, 0.2); 
+    }
+
+    .contact-item:hover i { 
+      transform: scale(1.15) rotate(6deg); 
+      color: var(--gold); 
+    }
+
+    .contact-item p { 
+      color: #111827; 
+      font-weight: 600; 
+      font-size: 0.98rem; 
+      margin: 0; 
+      line-height: 1.4; 
+    }
+
+    /* =========================================
+       FOOTER
+       ========================================= */
+    footer { 
+      background: #1e1b4b; 
+      color: #e0e7ff; 
+      text-align: center; 
+      padding: 26px 14px; 
+      font-size: 14px; 
+      margin-top: auto; 
+      border-top: 5px solid var(--gold); 
+      line-height: 1.7;
+    }
+
+    footer strong {
+      color: #ffffff;
+      font-size: 15px;
+    }
+
+    footer span { 
+      display: block; 
+      font-size: 13px; 
+      opacity: 0.9; 
+      margin-top: 6px; 
+      color: var(--gold); 
+    }
+
+    /* =========================================
+       SCROLL REVEAL ANIMATIONS
+       ========================================= */
+    .reveal { 
+      opacity: 0; 
+      transform: translateY(28px); 
+      transition: all 0.7s cubic-bezier(0.2, 0.8, 0.2, 1); 
+    }
+
+    .reveal.active { 
+      opacity: 1; 
+      transform: none; 
+    }
+
+    html { 
+      user-select: none !important; 
+      -webkit-tap-highlight-color: transparent; 
+    }
   </style>
 </head>
 <body onload="pageLoaded()">
 
-<canvas id="holiCanvas"></canvas>
+<!-- Floating Flower and Sparkle Particles for Teacher's Day -->
+<canvas id="celebrationCanvas"></canvas>
 
+<!-- HERO SECTION -->
 <div class="hero-section">
   <header>
     <div class="header-graphics">
-      <div class="water-drop-container">
-        <img class="logo-inside" src="E4A_logo.png" alt="E4A Logo" onerror="this.src='https://via.placeholder.com/120x120?text=E4A+Logo'">
+      <div class="logo-container">
+        <div class="logo-inner">
+          <img class="logo-inside" src="E4A_logo.png" alt="E4A Study Class Logo" onerror="this.src='https://via.placeholder.com/120x120?text=E4A+Logo'">
+        </div>
       </div>
     </div>
 
-    <h1>E4A  STUDY  CLASS</h1>
+    <h1>E4A &nbsp;STUDY &nbsp;CLASS</h1>
     
     <nav>
       <ul>
@@ -345,18 +615,33 @@
     </nav>
   </header>
 
-  <div class="water-day-slogan reveal active">
-    <div class="title">💧 जल ही जीवन है! 💧</div>
-    <div class="subtitle">हर एक बूंद कीमती है, कृपया पानी बचाएं।</div>
+  <!-- TEACHER'S DAY SHLOKA BANNER -->
+  <div class="teachers-day-banner reveal active">
+    <div class="shloka-badge">
+      <span>🌸</span> 5th September &bull; शिक्षक दिवस <span>🌸</span>
+    </div>
+    <div class="title">शिक्षक दिवस की हार्दिक शुभकामनाएं!</div>
+    <div class="shloka-quote">
+      "गुरुर्ब्रह्मा गुरुर्विष्णुः गुरुर्देवो महेश्वरः ।<br>
+      गुरुः साक्षात् परब्रह्म तस्मै श्रीगुरवे नमः ॥"
+    </div>
+    <div class="subtext">
+      अज्ञान के अंधकार को मिटाकर ज्ञान की ज्योति जलाने वाले सभी गुरुजनों को सादर नमन।
+    </div>
   </div>
 
-  <div class="water-day-image-container reveal active">
-      <img id="waterDayImage" src="save_water_poster.png" alt="World Water Day Celebration" onerror="this.src='https://via.placeholder.com/1000x400/0055FF/FFFFFF?text=Upload+Save+Water+Poster+Here'">
+  <!-- HERO IMAGE CONTAINER (Fits all screen sizes & mobile) -->
+  <div class="hero-image-wrapper reveal active">
+    <div class="image-card">
+      <img id="teacherDayImage" src="tday.png" alt="Happy Teachers' Day Celebration" onerror="this.src='https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80'">
+    </div>
   </div>
 </div>
 
+<!-- MAIN CONTENT -->
 <main>
 
+<!-- ABOUT US SECTION -->
 <section id="about">
   <h2>About Us</h2>
   <div class="about-grid">
@@ -374,14 +659,16 @@
   </div>
 </section>
 
+<!-- STUDENTS SECTION -->
 <section id="students">
   <h2>Student Corner</h2>
   <div class="student-grid" id="studentGrid"></div>
 </section>
 
+<!-- CONTACT SECTION -->
 <section id="contact">
   <h2>Contact Us</h2>
-  <div class="box contact-grid reveal">
+  <div class="contact-grid reveal">
     
     <div class="contact-item">
       <a href="tel:8210660831">
@@ -391,7 +678,7 @@
     </div>
 
     <div class="contact-item">
-      <a href="https://whatsapp.com/channel/0029Vb7H8WC5PO17EFx61S38">
+      <a href="https://whatsapp.com/channel/0029Vb7H8WC5PO17EFx61S38" target="_blank" rel="noopener">
         <i class='bx bxl-whatsapp'></i> 
         <p>Join WhatsApp Channel</p>
       </a>
@@ -405,7 +692,7 @@
     </div>
 
     <div class="contact-item">
-      <a href="http://googleusercontent.com/maps.google.com/maps?q=E4A+Study+Class+Adityapur" target="_blank">
+      <a href="http://googleusercontent.com/maps.google.com/maps?q=E4A+Study+Class+Adityapur" target="_blank" rel="noopener">
         <i class='bx bx-map'></i> 
         <p>Adityapur, Jamshedpur</p>
       </a>
@@ -416,21 +703,22 @@
 
 </main>
 
+<!-- FOOTER -->
 <footer>
-  © 2025-2026 | <strong> E4A Study Class</strong><br>Education For All
+  &copy; 2025-2026 | <strong>E4A Study Class</strong><br>Education For All
   <span>Designed by <b>Maheshwar Besra</b></span>
 </footer>
 
 <script>
   // STUDENT DATA
   const students = [
-    { name: "Aditya Hansda", class: "Class 6", img: "Students/ah.png", color: "var(--magenta)" },
+    { name: "Aditya Hansda", class: "Class 6", img: "Students/ah.png", color: "var(--crimson)" },
     { name: "Shankar Soy", class: "Class 2", img: "Students/sk.png", color: "var(--gold)" },
     { name: "Kamal Soy", class: "Class 2", img: "Students/ks.png", color: "var(--lime)" },
     { name: "Kunal Horo", class: "Class 1", img: "Students/kh.png", color: "var(--cyan)" },
     { name: "Krishna Hansda", class: "Class UKG", img: "Students/krh.png", color: "var(--primary)" },
-    { name: "Kajal Kumari", class: "Class LKG", img: "Students/kk.png", color: "var(--orange)" },
-    { name: "Naina Kumari", class: "Class Nursery", img: "Students/nk.png", color: "var(--magenta)" }
+    { name: "Kajal Kumari", class: "Class LKG", img: "Students/orange" ? "var(--orange)" : "#ea580c", color: "var(--orange)" },
+    { name: "Naina Kumari", class: "Class Nursery", img: "Students/nk.png", color: "var(--crimson)" }
   ];
 
   const grid = document.getElementById("studentGrid");
@@ -439,11 +727,10 @@
   students.forEach(s => {
     const card = document.createElement("div");
     card.className = "student-card reveal";
-    
-    card.style.borderTop = `6px solid ${s.color}`;
+    card.style.borderTop = `5px solid ${s.color}`;
     
     card.innerHTML = `
-      <img src="${s.img}" alt="${s.name}" onerror="this.src='https://via.placeholder.com/100x100?text=No+Img'">
+      <img src="${s.img}" alt="${s.name}" onerror="this.src='https://via.placeholder.com/100x100?text=Student'">
       <h4>${s.name}</h4>
       <p>${s.class}</p>
     `;
@@ -452,12 +739,12 @@
 
   // SCROLL ANIMATION
   const reveals = document.querySelectorAll(".reveal");
-  function revealOnScroll(){
+  function revealOnScroll() {
     reveals.forEach(el => {
       const windowHeight = window.innerHeight;
       const elementTop = el.getBoundingClientRect().top;
-      const elementVisible = 50;
-      if(elementTop < windowHeight - elementVisible){
+      const elementVisible = 40;
+      if (elementTop < windowHeight - elementVisible) {
         el.classList.add("active");
       }
     });
@@ -466,23 +753,23 @@
   revealOnScroll(); 
 
   // ==========================================
-  // FALLING WATER DROPS SHOWER ANIMATION
+  // TEACHER'S DAY CELEBRATION PARTICLE SHOWER
   // ==========================================
-  const canvas = document.getElementById('holiCanvas');
+  const canvas = document.getElementById('celebrationCanvas');
   const ctx = canvas.getContext('2d');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
-  window.addEventListener('resize', () => {
+  
+  function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-  });
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
 
-  const flowers = [];
-  const flowerEmojis = ['💧', '💦', '🌊', '🌧️', '🫧'];
-  const maxFlowers = 35; 
+  const particles = [];
+  const celebrationEmojis = ['🌺', '🌸', '✨', '🌼', '⭐', '💐', '📚'];
+  const maxParticles = 35;
 
-  class Flower {
+  class Particle {
     constructor(isInitialLoad = false) {
       this.reset();
       if (isInitialLoad) {
@@ -492,13 +779,13 @@
     
     reset() {
       this.x = Math.random() * canvas.width;
-      this.y = -50; 
-      this.size = Math.random() * 15 + 15; 
-      this.speedY = Math.random() * 2 + 1; 
-      this.speedX = Math.random() * 1 - 0.5; 
-      this.emoji = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
+      this.y = -40; 
+      this.size = Math.random() * 14 + 14; 
+      this.speedY = Math.random() * 1.8 + 0.8; 
+      this.speedX = Math.random() * 1.2 - 0.6; 
+      this.emoji = celebrationEmojis[Math.floor(Math.random() * celebrationEmojis.length)];
       this.rotation = Math.random() * 360;
-      this.rotationSpeed = (Math.random() - 0.5) * 2; 
+      this.rotationSpeed = (Math.random() - 0.5) * 1.6; 
     }
 
     update() {
@@ -506,7 +793,7 @@
       this.x += this.speedX;
       this.rotation += this.rotationSpeed;
 
-      if (this.y > canvas.height + 50) {
+      if (this.y > canvas.height + 40) {
         this.reset();
       }
     }
@@ -515,7 +802,7 @@
       ctx.save();
       ctx.translate(this.x, this.y);
       ctx.rotate(this.rotation * Math.PI / 180);
-      ctx.font = this.size + 'px Arial';
+      ctx.font = `${this.size}px Arial`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText(this.emoji, 0, 0);
@@ -523,51 +810,54 @@
     }
   }
 
-  for (let i = 0; i < maxFlowers; i++) {
-    flowers.push(new Flower(true));
+  for (let i = 0; i < maxParticles; i++) {
+    particles.push(new Particle(true));
   }
 
-  function animateFlowers() {
+  function animateParticles() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    flowers.forEach(flower => {
-      flower.update();
-      flower.draw();
+    particles.forEach(p => {
+      p.update();
+      p.draw();
     });
-    requestAnimationFrame(animateFlowers);
+    requestAnimationFrame(animateParticles);
   }
-  animateFlowers();
+  animateParticles();
 
-  function createTapFlowers(x, y) {
-    for(let i=0; i<5; i++){
-        let f = new Flower();
-        f.x = x;
-        f.y = y;
-        f.speedY = Math.random() * -3 - 2; 
-        f.speedX = Math.random() * 4 - 2;
-        flowers.push(f);
+  // Interactive Burst on Tap/Click
+  function createTapBurst(x, y) {
+    for (let i = 0; i < 6; i++) {
+      let p = new Particle();
+      p.x = x;
+      p.y = y;
+      p.speedY = Math.random() * -3 - 2; 
+      p.speedX = Math.random() * 4 - 2;
+      particles.push(p);
     }
-    if(flowers.length > 70) {
-        flowers.splice(0, flowers.length - 70);
+    if (particles.length > 70) {
+      particles.splice(0, particles.length - 70);
     }
   }
 
   window.addEventListener('click', (e) => {
-    createTapFlowers(e.clientX, e.clientY);
+    createTapBurst(e.clientX, e.clientY);
   });
   
   window.addEventListener('touchstart', (e) => {
-    createTapFlowers(e.touches[0].clientX, e.touches[0].clientY);
-  });
+    if (e.touches && e.touches[0]) {
+      createTapBurst(e.touches[0].clientX, e.touches[0].clientY);
+    }
+  }, { passive: true });
 
   // ==========================================
   // SERVICE WORKER & APP LOGIC
   // ==========================================
-  if("serviceWorker" in navigator){
-    navigator.serviceWorker.register("sw.js");
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js").catch(() => {});
   }
 
-  document.addEventListener("SwipeRefresh", function(){
-      location.reload();
+  document.addEventListener("SwipeRefresh", function() {
+    location.reload();
   });
 
   function pageLoaded() {
