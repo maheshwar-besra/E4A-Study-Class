@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>E4A Study Class - Happy Teacher's Day</title>
+  <title>E4A Study Class - Happy Navratri</title>
 
   <link rel="manifest" href="manifest.json">
 
@@ -17,12 +17,12 @@
   
   <style>
     /* =========================================
-       CSS VARIABLES - Teacher's Day Palette
+       CSS VARIABLES - Festive Palette
        ========================================= */
     :root {
       --primary: #6c2bd9;       /* Royal Inspiring Purple */
       --primary-dark: #4c1d95;  /* Deep Purple */
-      --gold: #f59e0b;          /* Teacher's Day Gold */
+      --gold: #f59e0b;          /* Festive Gold */
       --gold-light: #fef3c7;
       --crimson: #e11d48;       /* Festive Rose / Crimson */
       --cyan: #0284c7;          /* Sky Blue */
@@ -66,7 +66,7 @@
     }
 
     /* =========================================
-       CELEBRATORY CANVAS LAYER (FLOWERS & STARS)
+       CELEBRATORY CANVAS LAYER (FLOWERS & DIYAS)
        ========================================= */
     #celebrationCanvas {
       position: fixed;
@@ -224,7 +224,7 @@
     nav ul li:nth-child(3) a:hover { background: var(--lime); color: #fff; transform: translateY(-2px); }
 
     /* =========================================
-       TEACHER'S DAY SHLOKA BANNER
+       NAVRATRI SHLOKA BANNER
        ========================================= */
     .teachers-day-banner {
       text-align: center;
@@ -652,7 +652,7 @@
 </head>
 <body onload="pageLoaded()">
 
-<!-- Floating Flower, Star & Sparkle Particles -->
+<!-- Floating Flower, Diya & Sparkle Particles -->
 <canvas id="celebrationCanvas"></canvas>
 
 <!-- HERO SECTION: Precisely 100% of the mobile viewport height -->
@@ -677,25 +677,25 @@
     </nav>
   </header>
 
-  <!-- TEACHER'S DAY SHLOKA BANNER -->
+  <!-- NAVRATRI SPECIAL SHLOKA BANNER -->
   <div class="teachers-day-banner reveal active">
     <div class="shloka-badge">
-      <span>🌸</span> 5th September &bull; शिक्षक दिवस <span>🌸</span>
+      <span>🌺</span> शक्ति और साधना का महापर्व &bull; शुभ नवरात्रि <span>🪔</span>
     </div>
-    <div class="title">शिक्षक दिवस की हार्दिक शुभकामनाएं!</div>
+    <div class="title">शारदीय नवरात्रि की हार्दिक शुभकामनाएं!</div>
     <div class="shloka-quote">
-      "गुरुर्ब्रह्मा गुरुर्विष्णुः गुरुर्देवो महेश्वरः ।<br>
-      गुरुः साक्षात् परब्रह्म तस्मै श्रीगुरवे नमः ॥"
+      "सर्वमंगल मांगल्ये शिवे सर्वार्थ साधिके ।<br>
+      शरण्ये त्र्यम्बके गौरि नारायणि नमोऽस्तु ते ॥"
     </div>
     <div class="subtext">
-      अज्ञान के अंधकार को मिटाकर ज्ञान की ज्योति जलाने वाले सभी गुरुजनों को सादर नमन।
+     🌼 माँ दुर्गा कृपा से आप सभी के जीवन को ज्ञान, शक्ति, सुख और नई ऊर्जा के आलोक से प्रकाशित करें। ! 🙏
     </div>
   </div>
 
   <!-- HERO IMAGE (Fits the exact remaining mobile screen height) -->
   <div class="hero-image-wrapper reveal active">
     <div class="image-card">
-      <img id="teacherDayImage" src="tday.png" alt="Happy Teachers' Day Celebration" onerror="this.src='https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80'">
+      <img id="navratriImage" src="navratri.png" alt="Happy Navratri Celebration" onerror="this.src='https://images.unsplash.com/photo-1603228254119-e6a4d095dc59?auto=format&fit=crop&w=1200&q=80'">
     </div>
   </div>
 </div>
@@ -815,7 +815,7 @@
   revealOnScroll(); 
 
   // ==========================================
-  // TEACHER'S DAY CELEBRATION PARTICLE SHOWER
+  // NAVRATRI CELEBRATION PARTICLE SHOWER
   // ==========================================
   const canvas = document.getElementById('celebrationCanvas');
   const ctx = canvas.getContext('2d');
@@ -828,7 +828,7 @@
   window.addEventListener('resize', resizeCanvas);
 
   const particles = [];
-  const celebrationEmojis = ['🌼', '🌸', '⭐', '🖊️', '✏️', '📚'];
+  const celebrationEmojis = ['🌺', '🪔', '🔱', '🌼', '✨', '🌸'];
   const maxParticles = 35;
 
   class Particle {
