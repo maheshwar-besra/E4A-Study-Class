@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>E4A Study Class - Jai Maa Laxmi</title>
+
   <link rel="manifest" href="manifest.json">
 
   <!-- Google Fonts -->
@@ -78,12 +79,14 @@
     }
 
     /* =========================================
-       HERO SECTION - 100% DYNAMIC VIEWPORT HEIGHT
-       Guarantees "About Us" starts strictly below the fold!
+       HERO SECTION - STRICT 100% VIEWPORT LOCK
+       Guarantees "About Us" NEVER appears on the first screen!
        ========================================= */
     .hero-section {
       position: relative;
       width: 100%;
+      height: 100vh;
+      height: 100dvh;
       min-height: 100vh;
       min-height: 100dvh;
       display: flex;
@@ -92,6 +95,7 @@
       background: linear-gradient(180deg, #ffffff 0%, rgba(245, 243, 255, 0.95) 100%);
       border-bottom: 2px solid rgba(108, 43, 217, 0.08);
       overflow: hidden;
+      padding-bottom: 12px;
     }
 
     main { 
@@ -125,7 +129,7 @@
     }
 
     /* =========================================
-       CLEAN CIRCULAR LOGO (NO TEXT RIBBON)
+       CLEAN CIRCULAR LOGO
        ========================================= */
     .header-graphics {
       display: flex;
@@ -223,13 +227,13 @@
     nav ul li:nth-child(3) a:hover { background: var(--lime); color: #fff; transform: translateY(-2px); }
 
     /* =========================================
-       NAVRATRI SHLOKA BANNER
+       MAA LAXMI SHLOKA BANNER
        ========================================= */
     .teachers-day-banner {
       text-align: center;
-      padding: 12px 16px 6px;
+      padding: 10px 16px;
       max-width: 920px;
-      margin: 0 auto;
+      margin: auto;
       font-family: 'Noto Sans Devanagari', sans-serif;
       flex-shrink: 0;
     }
@@ -243,19 +247,18 @@
       border: 1px solid #fcd34d;
       font-size: 0.8rem;
       font-weight: 700;
-      padding: 3px 12px;
+      padding: 4px 14px;
       border-radius: 999px;
-      margin-top: 5px;
-      margin-bottom: 15px;
+      margin-bottom: 14px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
 
     .teachers-day-banner .title {
-      font-size: 1.38rem;
+      font-size: 1.42rem;
       font-weight: 800;
       color: var(--primary-dark); 
-      margin-bottom: 15px;
+      margin-bottom: 14px;
       line-height: 1.35;
       background: linear-gradient(135deg, var(--primary-dark) 20%, var(--crimson) 80%);
       -webkit-background-clip: text;
@@ -263,18 +266,18 @@
     }
 
     .teachers-day-banner .shloka-quote {
-      font-size: 0.98rem;
+      font-size: 1.02rem;
       font-weight: 600;
       color: #7c2d12;
-      line-height: 1.5;
+      line-height: 1.55;
       max-width: 720px;
-      margin: 14px auto 0;
+      margin: 10px auto 0;
     }
 
     .teachers-day-banner .subtext {
-      font-size: 0.86rem;
+      font-size: 0.88rem;
       color: #4b5563;
-      margin-top: 14px;
+      margin-top: 12px;
       font-family: 'Poppins', sans-serif;
     }
 
@@ -284,8 +287,8 @@
     .hero-image-wrapper {
       width: 100%;
       max-width: 960px;
-      margin: 0 auto;
-      padding: 6px 16px 16px;
+      margin: auto;
+      padding: 4px 16px 12px;
       flex: 1 1 auto;
       min-height: 0;
       display: flex;
@@ -323,14 +326,12 @@
       display: block;
       border-radius: 12px;
       object-fit: contain;
-      /* Dynamic viewport height ceiling to fit all screens comfortably */
-      max-height: min(44vh, 44dvh, 420px); 
+      max-height: min(46vh, 46dvh, 430px); 
       background: #fdf2f8;
     }
 
     /* =========================================
        ADAPTIVE VIEWPORT HEIGHT BREAKPOINTS
-       (Ensures zero overlap and perfect mobile fit)
        ========================================= */
     @media (max-height: 780px) {
       header {
@@ -354,15 +355,16 @@
         font-size: 12.5px;
       }
       .teachers-day-banner {
-        padding: 8px 12px 4px;
+        padding: 6px 12px;
       }
       .teachers-day-banner .shloka-badge {
         font-size: 0.74rem;
         padding: 2px 10px;
-        margin-bottom: 4px;
+        margin-bottom: 6px;
       }
       .teachers-day-banner .title {
         font-size: 1.22rem;
+        margin-bottom: 8px;
       }
       .teachers-day-banner .shloka-quote {
         font-size: 0.88rem;
@@ -370,17 +372,17 @@
       }
       .teachers-day-banner .subtext {
         font-size: 0.78rem;
-        margin-top: 2px;
+        margin-top: 6px;
       }
       .hero-image-wrapper {
-        padding: 4px 12px 12px;
+        padding: 4px 12px 8px;
       }
       .image-card {
         padding: 5px;
         border-radius: 14px;
       }
       .image-card img {
-        max-height: min(41dvh, 340px);
+        max-height: min(40dvh, 330px);
       }
     }
 
@@ -402,14 +404,13 @@
         font-size: 0.82rem;
       }
       .teachers-day-banner .subtext {
-        display: none; /* Hide subtext on very short viewports */
+        display: none;
       }
       .image-card img {
-        max-height: min(38dvh, 260px);
+        max-height: min(36dvh, 250px);
       }
     }
 
-    /* Screen width adjustments */
     @media (max-width: 480px) {
       header h1 {
         font-size: 21px;
@@ -433,7 +434,7 @@
     }
 
     #about {
-      padding-top: 65px; /* Clean breathing room when scrolled into view */
+      padding-top: 65px;
     }
 
     h2 { 
@@ -651,10 +652,10 @@
 </head>
 <body onload="pageLoaded()">
 
-<!-- Floating Flower, Diya & Sparkle Particles -->
+<!-- Floating Lotus, Diya & Gold Coin Particles -->
 <canvas id="celebrationCanvas"></canvas>
 
-<!-- HERO SECTION: Precisely 100% of the mobile viewport height -->
+<!-- HERO SECTION: Strictly locked to 100% of the mobile viewport height -->
 <div class="hero-section">
   <header>
     <div class="header-graphics">
@@ -676,7 +677,7 @@
     </nav>
   </header>
 
-    <!-- MAA LAXMI SPECIAL SHLOKA BANNER -->
+  <!-- MAA LAXMI SPECIAL SHLOKA BANNER -->
   <div class="teachers-day-banner reveal active">
     <div class="shloka-badge">
       <span>🪷</span> सुख, समृद्धि और वैभव का पर्व &bull; श्री महालक्ष्मी नमन <span>🪔</span>
@@ -691,14 +692,16 @@
     </div>
   </div>
 
-  <!-- HERO IMAGE (Fits the exact remaining mobile screen height) -->
+  <!-- HERO IMAGE (Stays inside hero-section so About Us is pushed off-screen) -->
   <div class="hero-image-wrapper reveal active">
     <div class="image-card">
       <img id="laxmiImage" src="laxmi.png" alt="Maa Laxmi Blessings" onerror="this.src='https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=1200&q=80'">
     </div>
   </div>
+</div>
+<!-- END OF HERO SECTION -->
 
-<!-- MAIN CONTENT (Starts strictly below the first viewport) -->
+<!-- MAIN CONTENT (Starts strictly on the second screen when scrolling) -->
 <main>
 
 <!-- ABOUT US SECTION -->
@@ -813,7 +816,7 @@
   revealOnScroll(); 
 
   // ==========================================
-  // NAVRATRI CELEBRATION PARTICLE SHOWER
+  // MAA LAXMI CELEBRATION PARTICLE SHOWER
   // ==========================================
   const canvas = document.getElementById('celebrationCanvas');
   const ctx = canvas.getContext('2d');
